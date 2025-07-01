@@ -2,30 +2,30 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = "/usr/bin/python3"
+        PYTHON = "C:\\Python39\\python.exe"  // Adjust this path if needed
     }
 
-   triggers {
-    // Every Monday at 11:00 AM
-    cron('0 11 * * 1')
-  }
+    triggers {
+        // Every Monday at 11:00 AM
+        cron('0 11 * * 1')
+    }
 
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/Lightmetrics/UI_web_automation_lm.git'
+                git branch: 'main', url: 'https://github.com/Lightmetrics/UI_web_automation_lm.git'
             }
         }
 
         stage('Setup Python Env') {
             steps {
-                sh 'pip3 install -r requirements.txt'
+                bat 'pip install -r requirements.txt'
             }
         }
 
         stage('Run Tests') {
             steps {
-                sh 'pytest --html=report.html'
+                bat 'pytest --html=report.html'
             }
         }
 

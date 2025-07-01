@@ -13,7 +13,7 @@ pipeline {
     stages {
         stage('Clone Repository') {
             steps {
-                git branch: 'master', url: 'https://github.com/Lightmetrics/UI_web_automation_lm.git'
+                git branch: 'main', url: 'https://github.com/Lightmetrics/UI_web_automation_lm.git'
             }
         }
 

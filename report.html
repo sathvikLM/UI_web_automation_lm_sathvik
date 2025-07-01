@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">LightMetrics Technologies Pvt. Ltd</title>
+      <link href="assets/style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1 id="title">LightMetrics Technologies Pvt. Ltd</h1>
+    <p>Report generated on 11-Jun-2025 at 16:32:05 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.1.1</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="4">No results found. Check the filters.</th>
+        </tr>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="4">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left"><</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">></div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+          <h3> TSP : &apos;Charteredgreentech&apos;,&apos;Argus&apos;,&apos;Quantatec&apos;,&apos;Safefleet&apos;,&apos;Assuredtechmatics&apos;,&apos;Coltrack&apos;,&apos;Connectm&apos;,&apos;Michelineu&apos;,&apos;Radius&apos;,&apos;Waypointiot&apos;,&apos;Maticx&apos;,&apos;Turingriskservices&apos;,&apos;Geoboxau&apos;,&apos;Cerebrumx&apos; </h3>
+        </div>
+        <p class="run-count">4 tests took 00:00:25.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" />
+            <span class="failed">4 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" disabled/>
+            <span class="passed">0 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" />
+            <span class="error">10 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
+            <span class="rerun">0 Reruns</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+        <h3> </h3>
+      </div>
+      <div class="additional-summary postfix">
+        <h3> </h3>
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.10.12&#34;, &#34;Platform&#34;: &#34;Linux-6.8.0-60-generic-x86_64-with-glibc2.35&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.1.1&#34;, &#34;pluggy&#34;: &#34;1.4.0&#34;}, &#34;Plugins&#34;: {&#34;html-reporter&#34;: &#34;0.2.9&#34;, &#34;ordering&#34;: &#34;0.6&#34;, &#34;allure-pytest&#34;: &#34;2.13.3&#34;, &#34;xdist&#34;: &#34;3.5.0&#34;, &#34;order&#34;: &#34;1.2.0&#34;, &#34;dependency&#34;: &#34;0.6.0&#34;, &#34;forked&#34;: &#34;1.6.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;base-url&#34;: &#34;2.1.0&#34;, &#34;selenium&#34;: &#34;4.1.0&#34;, &#34;variables&#34;: &#34;3.1.0&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}, &#34;Base URL&#34;: &#34;&#34;}, &#34;tests&#34;: {&#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Charteredgreentech]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Charteredgreentech]&#34;, &#34;duration&#34;: &#34;00:00:03&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Charteredgreentech]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:03&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;self = &amp;lt;testCases.test_LM_RegressionSuite.Test_LM_Regression_Suite object at 0x7f5ea8b31720&amp;gt;, config = &amp;#x27;Charteredgreentech&amp;#x27;\n\n    @pytest.mark.parametrize(&amp;quot;config&amp;quot;, [ &amp;#x27;Charteredgreentech&amp;#x27;,&amp;#x27;Argus&amp;#x27;,&amp;#x27;Quantatec&amp;#x27;,&amp;#x27;Safefleet&amp;#x27;,&amp;#x27;Assuredtechmatics&amp;#x27;,&amp;#x27;Coltrack&amp;#x27;,&amp;#x27;Connectm&amp;#x27;,&amp;#x27;Michelineu&amp;#x27;,&amp;#x27;Radius&amp;#x27;,&amp;#x27;Waypointiot&amp;#x27;,&amp;#x27;Maticx&amp;#x27;,&amp;#x27;Turingriskservices&amp;#x27;,&amp;#x27;Geoboxau&amp;#x27;,&amp;#x27;Cerebrumx&amp;#x27; ])\n    def test_lm_regression_suite(self, config):\n&amp;gt;       log = self.getLogger()\n\ntestCases/test_LM_RegressionSuite.py:17: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nutilities/BaseClass.py:17: in getLogger\n    fileHandler = logging.FileHandler(&amp;#x27;./Logs/logfile.log&amp;#x27;)\n/usr/lib/python3.10/logging/__init__.py:1169: in __init__\n    StreamHandler.__init__(self, self._open())\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;[AttributeError(&amp;quot;&amp;#x27;FileHandler&amp;#x27; object has no attribute &amp;#x27;level&amp;#x27;&amp;quot;) raised in repr()] FileHandler object at 0x7f5ea8b32890&amp;gt;\n\n    def _open(self):\n        &amp;quot;&amp;quot;&amp;quot;\n        Open the current base file with the (original) mode and encoding.\n        Return the resulting stream.\n        &amp;quot;&amp;quot;&amp;quot;\n        open_func = self._builtin_open\n&amp;gt;       return open_func(self.baseFilename, self.mode,\n                         encoding=self.encoding, errors=self.errors)\nE       FileNotFoundError: [Errno 2] No such file or directory: &amp;#x27;/home/user/Downloads/LM_Regression/Logs/logfile.log&amp;#x27;\n\n/usr/lib/python3.10/logging/__init__.py:1201: FileNotFoundError\n\n---------------------------- Captured stdout setup -----------------------------\nSign-in\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Argus]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Argus]&#34;, &#34;duration&#34;: &#34;00:00:03&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Argus]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:03&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;self = &amp;lt;testCases.test_LM_RegressionSuite.Test_LM_Regression_Suite object at 0x7f5ea8b31780&amp;gt;, config = &amp;#x27;Argus&amp;#x27;\n\n    @pytest.mark.parametrize(&amp;quot;config&amp;quot;, [ &amp;#x27;Charteredgreentech&amp;#x27;,&amp;#x27;Argus&amp;#x27;,&amp;#x27;Quantatec&amp;#x27;,&amp;#x27;Safefleet&amp;#x27;,&amp;#x27;Assuredtechmatics&amp;#x27;,&amp;#x27;Coltrack&amp;#x27;,&amp;#x27;Connectm&amp;#x27;,&amp;#x27;Michelineu&amp;#x27;,&amp;#x27;Radius&amp;#x27;,&amp;#x27;Waypointiot&amp;#x27;,&amp;#x27;Maticx&amp;#x27;,&amp;#x27;Turingriskservices&amp;#x27;,&amp;#x27;Geoboxau&amp;#x27;,&amp;#x27;Cerebrumx&amp;#x27; ])\n    def test_lm_regression_suite(self, config):\n&amp;gt;       log = self.getLogger()\n\ntestCases/test_LM_RegressionSuite.py:17: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nutilities/BaseClass.py:17: in getLogger\n    fileHandler = logging.FileHandler(&amp;#x27;./Logs/logfile.log&amp;#x27;)\n/usr/lib/python3.10/logging/__init__.py:1169: in __init__\n    StreamHandler.__init__(self, self._open())\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;[AttributeError(&amp;quot;&amp;#x27;FileHandler&amp;#x27; object has no attribute &amp;#x27;level&amp;#x27;&amp;quot;) raised in repr()] FileHandler object at 0x7f5ea8b31510&amp;gt;\n\n    def _open(self):\n        &amp;quot;&amp;quot;&amp;quot;\n        Open the current base file with the (original) mode and encoding.\n        Return the resulting stream.\n        &amp;quot;&amp;quot;&amp;quot;\n        open_func = self._builtin_open\n&amp;gt;       return open_func(self.baseFilename, self.mode,\n                         encoding=self.encoding, errors=self.errors)\nE       FileNotFoundError: [Errno 2] No such file or directory: &amp;#x27;/home/user/Downloads/LM_Regression/Logs/logfile.log&amp;#x27;\n\n/usr/lib/python3.10/logging/__init__.py:1201: FileNotFoundError\n\n---------------------------- Captured stdout setup -----------------------------\nSign-in\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Quantatec]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Quantatec]&#34;, &#34;duration&#34;: &#34;00:00:03&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Quantatec]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:03&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;self = &amp;lt;testCases.test_LM_RegressionSuite.Test_LM_Regression_Suite object at 0x7f5ea8b31d80&amp;gt;, config = &amp;#x27;Quantatec&amp;#x27;\n\n    @pytest.mark.parametrize(&amp;quot;config&amp;quot;, [ &amp;#x27;Charteredgreentech&amp;#x27;,&amp;#x27;Argus&amp;#x27;,&amp;#x27;Quantatec&amp;#x27;,&amp;#x27;Safefleet&amp;#x27;,&amp;#x27;Assuredtechmatics&amp;#x27;,&amp;#x27;Coltrack&amp;#x27;,&amp;#x27;Connectm&amp;#x27;,&amp;#x27;Michelineu&amp;#x27;,&amp;#x27;Radius&amp;#x27;,&amp;#x27;Waypointiot&amp;#x27;,&amp;#x27;Maticx&amp;#x27;,&amp;#x27;Turingriskservices&amp;#x27;,&amp;#x27;Geoboxau&amp;#x27;,&amp;#x27;Cerebrumx&amp;#x27; ])\n    def test_lm_regression_suite(self, config):\n&amp;gt;       log = self.getLogger()\n\ntestCases/test_LM_RegressionSuite.py:17: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nutilities/BaseClass.py:17: in getLogger\n    fileHandler = logging.FileHandler(&amp;#x27;./Logs/logfile.log&amp;#x27;)\n/usr/lib/python3.10/logging/__init__.py:1169: in __init__\n    StreamHandler.__init__(self, self._open())\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;[AttributeError(&amp;quot;&amp;#x27;FileHandler&amp;#x27; object has no attribute &amp;#x27;level&amp;#x27;&amp;quot;) raised in repr()] FileHandler object at 0x7f5ea8b33c40&amp;gt;\n\n    def _open(self):\n        &amp;quot;&amp;quot;&amp;quot;\n        Open the current base file with the (original) mode and encoding.\n        Return the resulting stream.\n        &amp;quot;&amp;quot;&amp;quot;\n        open_func = self._builtin_open\n&amp;gt;       return open_func(self.baseFilename, self.mode,\n                         encoding=self.encoding, errors=self.errors)\nE       FileNotFoundError: [Errno 2] No such file or directory: &amp;#x27;/home/user/Downloads/LM_Regression/Logs/logfile.log&amp;#x27;\n\n/usr/lib/python3.10/logging/__init__.py:1201: FileNotFoundError\n\n---------------------------- Captured stdout setup -----------------------------\nSign-in\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Safefleet]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Failed&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Safefleet]&#34;, &#34;duration&#34;: &#34;00:00:03&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Failed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Safefleet]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:03&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;self = &amp;lt;testCases.test_LM_RegressionSuite.Test_LM_Regression_Suite object at 0x7f5ea8b31e40&amp;gt;, config = &amp;#x27;Safefleet&amp;#x27;\n\n    @pytest.mark.parametrize(&amp;quot;config&amp;quot;, [ &amp;#x27;Charteredgreentech&amp;#x27;,&amp;#x27;Argus&amp;#x27;,&amp;#x27;Quantatec&amp;#x27;,&amp;#x27;Safefleet&amp;#x27;,&amp;#x27;Assuredtechmatics&amp;#x27;,&amp;#x27;Coltrack&amp;#x27;,&amp;#x27;Connectm&amp;#x27;,&amp;#x27;Michelineu&amp;#x27;,&amp;#x27;Radius&amp;#x27;,&amp;#x27;Waypointiot&amp;#x27;,&amp;#x27;Maticx&amp;#x27;,&amp;#x27;Turingriskservices&amp;#x27;,&amp;#x27;Geoboxau&amp;#x27;,&amp;#x27;Cerebrumx&amp;#x27; ])\n    def test_lm_regression_suite(self, config):\n&amp;gt;       log = self.getLogger()\n\ntestCases/test_LM_RegressionSuite.py:17: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nutilities/BaseClass.py:17: in getLogger\n    fileHandler = logging.FileHandler(&amp;#x27;./Logs/logfile.log&amp;#x27;)\n/usr/lib/python3.10/logging/__init__.py:1169: in __init__\n    StreamHandler.__init__(self, self._open())\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;[AttributeError(&amp;quot;&amp;#x27;FileHandler&amp;#x27; object has no attribute &amp;#x27;level&amp;#x27;&amp;quot;) raised in repr()] FileHandler object at 0x7f5ea8879720&amp;gt;\n\n    def _open(self):\n        &amp;quot;&amp;quot;&amp;quot;\n        Open the current base file with the (original) mode and encoding.\n        Return the resulting stream.\n        &amp;quot;&amp;quot;&amp;quot;\n        open_func = self._builtin_open\n&amp;gt;       return open_func(self.baseFilename, self.mode,\n                         encoding=self.encoding, errors=self.errors)\nE       FileNotFoundError: [Errno 2] No such file or directory: &amp;#x27;/home/user/Downloads/LM_Regression/Logs/logfile.log&amp;#x27;\n\n/usr/lib/python3.10/logging/__init__.py:1201: FileNotFoundError\n\n---------------------------- Captured stdout setup -----------------------------\nSign-in\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Assuredtechmatics]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Assuredtechmatics]::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Assuredtechmatics]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Assuredtechmatics]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea8b310c0&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x614ea3bcd723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x614ea3bde0e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7e81da094ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x614ea3bdef33 &amp;lt;unknown&amp;gt;\nE       #1 0x614ea38d6ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x614ea38ad8cd &amp;lt;unknown&amp;gt;\nE       #3 0x614ea394c76d &amp;lt;unknown&amp;gt;\nE       #4 0x614ea3962226 &amp;lt;unknown&amp;gt;\nE       #5 0x614ea3943c53 &amp;lt;unknown&amp;gt;\nE       #6 0x614ea3914db3 &amp;lt;unknown&amp;gt;\nE       #7 0x614ea391577e &amp;lt;unknown&amp;gt;\nE       #8 0x614ea3ba486b &amp;lt;unknown&amp;gt;\nE       #9 0x614ea3ba8885 &amp;lt;unknown&amp;gt;\nE       #10 0x614ea3b92181 &amp;lt;unknown&amp;gt;\nE       #11 0x614ea3ba9412 &amp;lt;unknown&amp;gt;\nE       #12 0x614ea3b7625f &amp;lt;unknown&amp;gt;\nE       #13 0x614ea3bcd528 &amp;lt;unknown&amp;gt;\nE       #14 0x614ea3bcd723 &amp;lt;unknown&amp;gt;\nE       #15 0x614ea3bde0e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7e81da094ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Coltrack]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Coltrack]::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Coltrack]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Coltrack]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea88ec2e0&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x55fbf2d0b723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x55fbf2d1c0e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7603d5694ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x55fbf2d1cf33 &amp;lt;unknown&amp;gt;\nE       #1 0x55fbf2a14ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x55fbf29eb8cd &amp;lt;unknown&amp;gt;\nE       #3 0x55fbf2a8a76d &amp;lt;unknown&amp;gt;\nE       #4 0x55fbf2aa0226 &amp;lt;unknown&amp;gt;\nE       #5 0x55fbf2a81c53 &amp;lt;unknown&amp;gt;\nE       #6 0x55fbf2a52db3 &amp;lt;unknown&amp;gt;\nE       #7 0x55fbf2a5377e &amp;lt;unknown&amp;gt;\nE       #8 0x55fbf2ce286b &amp;lt;unknown&amp;gt;\nE       #9 0x55fbf2ce6885 &amp;lt;unknown&amp;gt;\nE       #10 0x55fbf2cd0181 &amp;lt;unknown&amp;gt;\nE       #11 0x55fbf2ce7412 &amp;lt;unknown&amp;gt;\nE       #12 0x55fbf2cb425f &amp;lt;unknown&amp;gt;\nE       #13 0x55fbf2d0b528 &amp;lt;unknown&amp;gt;\nE       #14 0x55fbf2d0b723 &amp;lt;unknown&amp;gt;\nE       #15 0x55fbf2d1c0e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7603d5694ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Connectm]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Connectm]::setup&#34;, &#34;duration&#34;: &#34;00:00:02&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Connectm]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:02&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Connectm]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea895b5e0&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x5a29e1bed723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x5a29e1bfe0e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x73df49e94ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x5a29e1bfef33 &amp;lt;unknown&amp;gt;\nE       #1 0x5a29e18f6ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x5a29e18cd8cd &amp;lt;unknown&amp;gt;\nE       #3 0x5a29e196c76d &amp;lt;unknown&amp;gt;\nE       #4 0x5a29e1982226 &amp;lt;unknown&amp;gt;\nE       #5 0x5a29e1963c53 &amp;lt;unknown&amp;gt;\nE       #6 0x5a29e1934db3 &amp;lt;unknown&amp;gt;\nE       #7 0x5a29e193577e &amp;lt;unknown&amp;gt;\nE       #8 0x5a29e1bc486b &amp;lt;unknown&amp;gt;\nE       #9 0x5a29e1bc8885 &amp;lt;unknown&amp;gt;\nE       #10 0x5a29e1bb2181 &amp;lt;unknown&amp;gt;\nE       #11 0x5a29e1bc9412 &amp;lt;unknown&amp;gt;\nE       #12 0x5a29e1b9625f &amp;lt;unknown&amp;gt;\nE       #13 0x5a29e1bed528 &amp;lt;unknown&amp;gt;\nE       #14 0x5a29e1bed723 &amp;lt;unknown&amp;gt;\nE       #15 0x5a29e1bfe0e4 &amp;lt;unknown&amp;gt;\nE       #16 0x73df49e94ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Michelineu]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Michelineu]::setup&#34;, &#34;duration&#34;: &#34;999 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Michelineu]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;999 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Michelineu]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea8868c10&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x647da0ee0723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x647da0ef10e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7fb633094ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x647da0ef1f33 &amp;lt;unknown&amp;gt;\nE       #1 0x647da0be9ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x647da0bc08cd &amp;lt;unknown&amp;gt;\nE       #3 0x647da0c5f76d &amp;lt;unknown&amp;gt;\nE       #4 0x647da0c75226 &amp;lt;unknown&amp;gt;\nE       #5 0x647da0c56c53 &amp;lt;unknown&amp;gt;\nE       #6 0x647da0c27db3 &amp;lt;unknown&amp;gt;\nE       #7 0x647da0c2877e &amp;lt;unknown&amp;gt;\nE       #8 0x647da0eb786b &amp;lt;unknown&amp;gt;\nE       #9 0x647da0ebb885 &amp;lt;unknown&amp;gt;\nE       #10 0x647da0ea5181 &amp;lt;unknown&amp;gt;\nE       #11 0x647da0ebc412 &amp;lt;unknown&amp;gt;\nE       #12 0x647da0e8925f &amp;lt;unknown&amp;gt;\nE       #13 0x647da0ee0528 &amp;lt;unknown&amp;gt;\nE       #14 0x647da0ee0723 &amp;lt;unknown&amp;gt;\nE       #15 0x647da0ef10e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7fb633094ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Radius]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Radius]::setup&#34;, &#34;duration&#34;: &#34;909 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Radius]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;909 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Radius]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea87bbd00&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x56683e9be723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x56683e9cf0e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x766e56c94ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x56683e9cff33 &amp;lt;unknown&amp;gt;\nE       #1 0x56683e6c7ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x56683e69e8cd &amp;lt;unknown&amp;gt;\nE       #3 0x56683e73d76d &amp;lt;unknown&amp;gt;\nE       #4 0x56683e753226 &amp;lt;unknown&amp;gt;\nE       #5 0x56683e734c53 &amp;lt;unknown&amp;gt;\nE       #6 0x56683e705db3 &amp;lt;unknown&amp;gt;\nE       #7 0x56683e70677e &amp;lt;unknown&amp;gt;\nE       #8 0x56683e99586b &amp;lt;unknown&amp;gt;\nE       #9 0x56683e999885 &amp;lt;unknown&amp;gt;\nE       #10 0x56683e983181 &amp;lt;unknown&amp;gt;\nE       #11 0x56683e99a412 &amp;lt;unknown&amp;gt;\nE       #12 0x56683e96725f &amp;lt;unknown&amp;gt;\nE       #13 0x56683e9be528 &amp;lt;unknown&amp;gt;\nE       #14 0x56683e9be723 &amp;lt;unknown&amp;gt;\nE       #15 0x56683e9cf0e4 &amp;lt;unknown&amp;gt;\nE       #16 0x766e56c94ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Waypointiot]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Waypointiot]::setup&#34;, &#34;duration&#34;: &#34;794 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Waypointiot]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;794 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Waypointiot]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea892de10&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x584d3c661723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x584d3c6720e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7118d5694ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x584d3c672f33 &amp;lt;unknown&amp;gt;\nE       #1 0x584d3c36ace6 &amp;lt;unknown&amp;gt;\nE       #2 0x584d3c3418cd &amp;lt;unknown&amp;gt;\nE       #3 0x584d3c3e076d &amp;lt;unknown&amp;gt;\nE       #4 0x584d3c3f6226 &amp;lt;unknown&amp;gt;\nE       #5 0x584d3c3d7c53 &amp;lt;unknown&amp;gt;\nE       #6 0x584d3c3a8db3 &amp;lt;unknown&amp;gt;\nE       #7 0x584d3c3a977e &amp;lt;unknown&amp;gt;\nE       #8 0x584d3c63886b &amp;lt;unknown&amp;gt;\nE       #9 0x584d3c63c885 &amp;lt;unknown&amp;gt;\nE       #10 0x584d3c626181 &amp;lt;unknown&amp;gt;\nE       #11 0x584d3c63d412 &amp;lt;unknown&amp;gt;\nE       #12 0x584d3c60a25f &amp;lt;unknown&amp;gt;\nE       #13 0x584d3c661528 &amp;lt;unknown&amp;gt;\nE       #14 0x584d3c661723 &amp;lt;unknown&amp;gt;\nE       #15 0x584d3c6720e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7118d5694ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Maticx]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Maticx]::setup&#34;, &#34;duration&#34;: &#34;808 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Maticx]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;808 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Maticx]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea88eec80&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x5cada3e4b723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x5cada3e5c0e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7eb12e694ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x5cada3e5cf33 &amp;lt;unknown&amp;gt;\nE       #1 0x5cada3b54ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x5cada3b2b8cd &amp;lt;unknown&amp;gt;\nE       #3 0x5cada3bca76d &amp;lt;unknown&amp;gt;\nE       #4 0x5cada3be0226 &amp;lt;unknown&amp;gt;\nE       #5 0x5cada3bc1c53 &amp;lt;unknown&amp;gt;\nE       #6 0x5cada3b92db3 &amp;lt;unknown&amp;gt;\nE       #7 0x5cada3b9377e &amp;lt;unknown&amp;gt;\nE       #8 0x5cada3e2286b &amp;lt;unknown&amp;gt;\nE       #9 0x5cada3e26885 &amp;lt;unknown&amp;gt;\nE       #10 0x5cada3e10181 &amp;lt;unknown&amp;gt;\nE       #11 0x5cada3e27412 &amp;lt;unknown&amp;gt;\nE       #12 0x5cada3df425f &amp;lt;unknown&amp;gt;\nE       #13 0x5cada3e4b528 &amp;lt;unknown&amp;gt;\nE       #14 0x5cada3e4b723 &amp;lt;unknown&amp;gt;\nE       #15 0x5cada3e5c0e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7eb12e694ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Turingriskservices]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Turingriskservices]::setup&#34;, &#34;duration&#34;: &#34;887 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Turingriskservices]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;887 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Turingriskservices]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea8959570&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x5cabd92eb723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x5cabd92fc0e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7a5da8294ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x5cabd92fcf33 &amp;lt;unknown&amp;gt;\nE       #1 0x5cabd8ff4ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x5cabd8fcb8cd &amp;lt;unknown&amp;gt;\nE       #3 0x5cabd906a76d &amp;lt;unknown&amp;gt;\nE       #4 0x5cabd9080226 &amp;lt;unknown&amp;gt;\nE       #5 0x5cabd9061c53 &amp;lt;unknown&amp;gt;\nE       #6 0x5cabd9032db3 &amp;lt;unknown&amp;gt;\nE       #7 0x5cabd903377e &amp;lt;unknown&amp;gt;\nE       #8 0x5cabd92c286b &amp;lt;unknown&amp;gt;\nE       #9 0x5cabd92c6885 &amp;lt;unknown&amp;gt;\nE       #10 0x5cabd92b0181 &amp;lt;unknown&amp;gt;\nE       #11 0x5cabd92c7412 &amp;lt;unknown&amp;gt;\nE       #12 0x5cabd929425f &amp;lt;unknown&amp;gt;\nE       #13 0x5cabd92eb528 &amp;lt;unknown&amp;gt;\nE       #14 0x5cabd92eb723 &amp;lt;unknown&amp;gt;\nE       #15 0x5cabd92fc0e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7a5da8294ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Geoboxau]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Geoboxau]::setup&#34;, &#34;duration&#34;: &#34;00:00:01&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Geoboxau]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:00:01&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Geoboxau]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea8b32e00&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x63682ebb7723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x63682ebc80e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x7f2fa3494ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x63682ebc8f33 &amp;lt;unknown&amp;gt;\nE       #1 0x63682e8c0ce6 &amp;lt;unknown&amp;gt;\nE       #2 0x63682e8978cd &amp;lt;unknown&amp;gt;\nE       #3 0x63682e93676d &amp;lt;unknown&amp;gt;\nE       #4 0x63682e94c226 &amp;lt;unknown&amp;gt;\nE       #5 0x63682e92dc53 &amp;lt;unknown&amp;gt;\nE       #6 0x63682e8fedb3 &amp;lt;unknown&amp;gt;\nE       #7 0x63682e8ff77e &amp;lt;unknown&amp;gt;\nE       #8 0x63682eb8e86b &amp;lt;unknown&amp;gt;\nE       #9 0x63682eb92885 &amp;lt;unknown&amp;gt;\nE       #10 0x63682eb7c181 &amp;lt;unknown&amp;gt;\nE       #11 0x63682eb93412 &amp;lt;unknown&amp;gt;\nE       #12 0x63682eb6025f &amp;lt;unknown&amp;gt;\nE       #13 0x63682ebb7528 &amp;lt;unknown&amp;gt;\nE       #14 0x63682ebb7723 &amp;lt;unknown&amp;gt;\nE       #15 0x63682ebc80e4 &amp;lt;unknown&amp;gt;\nE       #16 0x7f2fa3494ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}], &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Cerebrumx]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Error&#34;, &#34;testId&#34;: &#34;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Cerebrumx]::setup&#34;, &#34;duration&#34;: &#34;855 ms&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Error&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;testCases/test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Cerebrumx]::setup&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;855 ms&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;request = &amp;lt;SubRequest &amp;#x27;setup&amp;#x27; for &amp;lt;Function test_lm_regression_suite[Cerebrumx]&amp;gt;&amp;gt;\n\n    @pytest.fixture(scope=&amp;quot;function&amp;quot;, autouse=True)\n    def setup(request):\n        global driver\n        browser_name = request.config.getoption(&amp;quot;browser_name&amp;quot;)\n        if browser_name == &amp;quot;chrome&amp;quot;:\n            options = Options()\n            # options.add_argument(&amp;#x27;--headless&amp;#x27;)\n            options.add_argument(&amp;#x27;--no-sandbox&amp;#x27;)\n            options.add_argument(&amp;#x27;--disable-dev-shm-usage&amp;#x27;)\n            # driver = webdriver.Chrome(ChromeDriverManager().install())\n            driver = webdriver.Chrome(service=Service(&amp;quot;/home/user/Downloads/chromedriver-linux64/chromedriver&amp;quot;))\n            # driver = webdriver.Chrome(executable_path=&amp;quot;C:\\\\chromedriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;firefox&amp;quot;:\n            driver = webdriver.Firefox(executable_path=&amp;quot;C:\\\\geckodriver.exe&amp;quot;)\n        elif browser_name == &amp;quot;IE&amp;quot;:\n            print(&amp;quot;IE driver&amp;quot;)\n        driver.get(&amp;quot;https://admin.lightmetrics.co/&amp;quot;)\n&amp;gt;       driver.maximize_window()\n\ntestCases/conftest.py:60: \n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:499: in maximize_window\n    self.execute(command, None)\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/webdriver.py:347: in execute\n    self.error_handler.check_response(response)\n_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _\n\nself = &amp;lt;selenium.webdriver.remote.errorhandler.ErrorHandler object at 0x7f5ea8913280&amp;gt;\nresponse = {&amp;#x27;status&amp;#x27;: 404, &amp;#x27;value&amp;#x27;: &amp;#x27;{&amp;quot;value&amp;quot;:{&amp;quot;error&amp;quot;:&amp;quot;no such window&amp;quot;,&amp;quot;message&amp;quot;:&amp;quot;no such window: target window already closed\\\\...\\\\n#14 0x595ff01f4723 \\\\u003Cunknown&amp;gt;\\\\n#15 0x595ff02050e4 \\\\u003Cunknown&amp;gt;\\\\n#16 0x744718694ac3 \\\\u003Cunknown&amp;gt;\\\\n&amp;quot;}}&amp;#x27;}\n\n    def check_response(self, response: Dict[str, Any]) -&amp;gt; None:\n        &amp;quot;&amp;quot;&amp;quot;Checks that a JSON response from the WebDriver does not have an\n        error.\n    \n        :Args:\n         - response - The JSON response from the WebDriver server as a dictionary\n           object.\n    \n        :Raises: If the response contains an error message.\n        &amp;quot;&amp;quot;&amp;quot;\n        status = response.get(&amp;quot;status&amp;quot;, None)\n        if not status or status == ErrorCode.SUCCESS:\n            return\n        value = None\n        message = response.get(&amp;quot;message&amp;quot;, &amp;quot;&amp;quot;)\n        screen: str = response.get(&amp;quot;screen&amp;quot;, &amp;quot;&amp;quot;)\n        stacktrace = None\n        if isinstance(status, int):\n            value_json = response.get(&amp;quot;value&amp;quot;, None)\n            if value_json and isinstance(value_json, str):\n                import json\n    \n                try:\n                    value = json.loads(value_json)\n                    if len(value) == 1:\n                        value = value[&amp;quot;value&amp;quot;]\n                    status = value.get(&amp;quot;error&amp;quot;, None)\n                    if not status:\n                        status = value.get(&amp;quot;status&amp;quot;, ErrorCode.UNKNOWN_ERROR)\n                        message = value.get(&amp;quot;value&amp;quot;) or value.get(&amp;quot;message&amp;quot;)\n                        if not isinstance(message, str):\n                            value = message\n                            message = message.get(&amp;quot;message&amp;quot;)\n                    else:\n                        message = value.get(&amp;quot;message&amp;quot;, None)\n                except ValueError:\n                    pass\n    \n        exception_class: Type[WebDriverException]\n        e = ErrorCode()\n        error_codes = [item for item in dir(e) if not item.startswith(&amp;quot;__&amp;quot;)]\n        for error_code in error_codes:\n            error_info = getattr(ErrorCode, error_code)\n            if isinstance(error_info, list) and status in error_info:\n                exception_class = getattr(ExceptionMapping, error_code, WebDriverException)\n                break\n        else:\n            exception_class = WebDriverException\n    \n        if not value:\n            value = response[&amp;quot;value&amp;quot;]\n        if isinstance(value, str):\n            raise exception_class(value)\n        if message == &amp;quot;&amp;quot; and &amp;quot;message&amp;quot; in value:\n            message = value[&amp;quot;message&amp;quot;]\n    \n        screen = None  # type: ignore[assignment]\n        if &amp;quot;screen&amp;quot; in value:\n            screen = value[&amp;quot;screen&amp;quot;]\n    \n        stacktrace = None\n        st_value = value.get(&amp;quot;stackTrace&amp;quot;) or value.get(&amp;quot;stacktrace&amp;quot;)\n        if st_value:\n            if isinstance(st_value, str):\n                stacktrace = st_value.split(&amp;quot;\\n&amp;quot;)\n            else:\n                stacktrace = []\n                try:\n                    for frame in st_value:\n                        line = frame.get(&amp;quot;lineNumber&amp;quot;, &amp;quot;&amp;quot;)\n                        file = frame.get(&amp;quot;fileName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if line:\n                            file = f&amp;quot;{file}:{line}&amp;quot;\n                        meth = frame.get(&amp;quot;methodName&amp;quot;, &amp;quot;&amp;lt;anonymous&amp;gt;&amp;quot;)\n                        if &amp;quot;className&amp;quot; in frame:\n                            meth = f&amp;quot;{frame[&amp;#x27;className&amp;#x27;]}.{meth}&amp;quot;\n                        msg = &amp;quot;    at %s (%s)&amp;quot;\n                        msg = msg % (meth, file)\n                        stacktrace.append(msg)\n                except TypeError:\n                    pass\n        if exception_class == UnexpectedAlertPresentException:\n            alert_text = None\n            if &amp;quot;data&amp;quot; in value:\n                alert_text = value[&amp;quot;data&amp;quot;].get(&amp;quot;text&amp;quot;)\n            elif &amp;quot;alert&amp;quot; in value:\n                alert_text = value[&amp;quot;alert&amp;quot;].get(&amp;quot;text&amp;quot;)\n            raise exception_class(message, screen, stacktrace, alert_text)  # type: ignore[call-arg]  # mypy is not smart enough here\n&amp;gt;       raise exception_class(message, screen, stacktrace)\nE       selenium.common.exceptions.NoSuchWindowException: Message: no such window: target window already closed\nE       from unknown error: web view not found\nE         (Session info: chrome=122.0.6261.111)\nE       Stacktrace:\nE       #0 0x595ff0205f33 &amp;lt;unknown&amp;gt;\nE       #1 0x595fefefdce6 &amp;lt;unknown&amp;gt;\nE       #2 0x595fefed48cd &amp;lt;unknown&amp;gt;\nE       #3 0x595feff7376d &amp;lt;unknown&amp;gt;\nE       #4 0x595feff89226 &amp;lt;unknown&amp;gt;\nE       #5 0x595feff6ac53 &amp;lt;unknown&amp;gt;\nE       #6 0x595feff3bdb3 &amp;lt;unknown&amp;gt;\nE       #7 0x595feff3c77e &amp;lt;unknown&amp;gt;\nE       #8 0x595ff01cb86b &amp;lt;unknown&amp;gt;\nE       #9 0x595ff01cf885 &amp;lt;unknown&amp;gt;\nE       #10 0x595ff01b9181 &amp;lt;unknown&amp;gt;\nE       #11 0x595ff01d0412 &amp;lt;unknown&amp;gt;\nE       #12 0x595ff019d25f &amp;lt;unknown&amp;gt;\nE       #13 0x595ff01f4528 &amp;lt;unknown&amp;gt;\nE       #14 0x595ff01f4723 &amp;lt;unknown&amp;gt;\nE       #15 0x595ff02050e4 &amp;lt;unknown&amp;gt;\nE       #16 0x744718694ac3 &amp;lt;unknown&amp;gt;\n\nvenv/binr/lib/python3.10/site-packages/selenium/webdriver/remote/errorhandler.py:229: NoSuchWindowException\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;LightMetrics Technologies Pvt. Ltd&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > td')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > td')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+</html>

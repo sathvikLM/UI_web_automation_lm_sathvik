@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8"/>
+    <title id="head-title">LightMetrics Technologies Pvt. Ltd</title>
+      <link href="assets/style.css" rel="stylesheet" type="text/css"/>
+  </head>
+  <body>
+    <h1 id="title">LightMetrics Technologies Pvt. Ltd</h1>
+    <p>Report generated on 01-Jul-2025 at 12:30:47 by <a href="https://pypi.python.org/pypi/pytest-html">pytest-html</a>
+        v4.1.1</p>
+    <div id="environment-header">
+      <h2>Environment</h2>
+    </div>
+    <table id="environment"></table>
+    <!-- TEMPLATES -->
+      <template id="template_environment_row">
+      <tr>
+        <td></td>
+        <td></td>
+      </tr>
+    </template>
+    <template id="template_results-table__body--empty">
+      <tbody class="results-table-row">
+        <tr id="not-found-message">
+          <td colspan="4">No results found. Check the filters.</th>
+        </tr>
+    </template>
+    <template id="template_results-table__tbody">
+      <tbody class="results-table-row">
+        <tr class="collapsible">
+        </tr>
+        <tr class="extras-row">
+          <td class="extra" colspan="4">
+            <div class="extraHTML"></div>
+            <div class="media">
+              <div class="media-container">
+                  <div class="media-container__nav--left"><</div>
+                  <div class="media-container__viewport">
+                    <img src="" />
+                    <video controls>
+                      <source src="" type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="media-container__nav--right">></div>
+                </div>
+                <div class="media__name"></div>
+                <div class="media__counter"></div>
+            </div>
+            <div class="logwrapper">
+              <div class="logexpander"></div>
+              <div class="log"></div>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </template>
+    <!-- END TEMPLATES -->
+    <div class="summary">
+      <div class="summary__data">
+        <h2>Summary</h2>
+        <div class="additional-summary prefix">
+          <h3> TSP : &apos;Machinemax&apos; </h3>
+        </div>
+        <p class="run-count">1 test took 00:06:11.</p>
+        <p class="filter">(Un)check the boxes to filter the results.</p>
+        <div class="summary__reload">
+          <div class="summary__reload__button hidden" onclick="location.reload()">
+            <div>There are still tests running. <br />Reload this page to get the latest results!</div>
+          </div>
+        </div>
+        <div class="summary__spacer"></div>
+        <div class="controls">
+          <div class="filters">
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="failed" disabled/>
+            <span class="failed">0 Failed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="passed" />
+            <span class="passed">1 Passed,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="skipped" disabled/>
+            <span class="skipped">0 Skipped,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xfailed" disabled/>
+            <span class="xfailed">0 Expected failures,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="xpassed" disabled/>
+            <span class="xpassed">0 Unexpected passes,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="error" disabled/>
+            <span class="error">0 Errors,</span>
+            <input checked="true" class="filter" name="filter_checkbox" type="checkbox" data-test-result="rerun" disabled/>
+            <span class="rerun">0 Reruns</span>
+          </div>
+          <div class="collapse">
+            <button id="show_all_details">Show all details</button>&nbsp;/&nbsp;<button id="hide_all_details">Hide all details</button>
+          </div>
+        </div>
+      </div>
+      <div class="additional-summary summary">
+        <h3> </h3>
+      </div>
+      <div class="additional-summary postfix">
+        <h3> </h3>
+      </div>
+    </div>
+    <table id="results-table">
+      <thead id="results-table-head">
+        <tr>
+          <th class="sortable" data-column-type="result">Result</th>
+          <th class="sortable" data-column-type="testId">Test</th>
+          <th class="sortable" data-column-type="duration">Duration</th>
+          <th>Links</th>
+        </tr>
+      </thead>
+    </table>
+  </body>
+  <footer>
+    <div id="data-container" data-jsonblob="{&#34;environment&#34;: {&#34;Python&#34;: &#34;3.10.12&#34;, &#34;Platform&#34;: &#34;Linux-6.8.0-60-generic-x86_64-with-glibc2.35&#34;, &#34;Packages&#34;: {&#34;pytest&#34;: &#34;8.1.1&#34;, &#34;pluggy&#34;: &#34;1.4.0&#34;}, &#34;Plugins&#34;: {&#34;html-reporter&#34;: &#34;0.2.9&#34;, &#34;ordering&#34;: &#34;0.6&#34;, &#34;allure-pytest&#34;: &#34;2.13.3&#34;, &#34;xdist&#34;: &#34;3.5.0&#34;, &#34;order&#34;: &#34;1.2.0&#34;, &#34;dependency&#34;: &#34;0.6.0&#34;, &#34;forked&#34;: &#34;1.6.0&#34;, &#34;html&#34;: &#34;4.1.1&#34;, &#34;base-url&#34;: &#34;2.1.0&#34;, &#34;selenium&#34;: &#34;4.1.0&#34;, &#34;variables&#34;: &#34;3.1.0&#34;, &#34;metadata&#34;: &#34;3.1.1&#34;}, &#34;Base URL&#34;: &#34;&#34;}, &#34;tests&#34;: {&#34;test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Machinemax]&#34;: [{&#34;extras&#34;: [], &#34;result&#34;: &#34;Passed&#34;, &#34;testId&#34;: &#34;test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Machinemax]&#34;, &#34;duration&#34;: &#34;00:06:11&#34;, &#34;resultsTableRow&#34;: [&#34;&lt;td class=\&#34;col-result\&#34;&gt;Passed&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-testId\&#34;&gt;test_LM_RegressionSuite.py::Test_LM_Regression_Suite::test_lm_regression_suite[Machinemax]&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-duration\&#34;&gt;00:06:11&lt;/td&gt;&#34;, &#34;&lt;td class=\&#34;col-links\&#34;&gt;&lt;/td&gt;&#34;], &#34;log&#34;: &#34;---------------------------- Captured stdout setup -----------------------------\nSign-in\n\n----------------------------- Captured stdout call -----------------------------\nPopup not displayed in master page\nTSP_name is machinemaxuae\nv5.23.1\nhttps://master.lightmetrics.co/home\nhttps://uae-cabvision.machinemax.com/home\nMachine Max UAE Fleet Portal\nPopup not displayed in fleet page\nFleetName is Stevin Rock - UAE\nv10.3.0\nhttps://uae-cabvision.machinemax.com/home\nTRIPS matched\nDISTANCE (mi) matched\nEVENTS PER 100 MILES matched\nDURATION (hours) matched\nRecommended For Coaching matched\nTop Drivers matched\nCoachable Drivers matched\nEvent Summary matched\nEvent Trend matched\nhttps://uae-cabvision.machinemax.com/safety-events\nwarning\nSafety Events matched\nEvents View (2671 events) matched\nhttps://uae-cabvision.machinemax.com/safety-events\nfilter_list matched\nhttps://uae-cabvision.machinemax.com/safety-events\ngrid_view matched\nhttps://uae-cabvision.machinemax.com/trips\nlocation_on\nTrips matched\nTRIPS matched\nTrip List\n(8693 Trips) matched\nEXPORT OPTIONS arrow_drop_down matched\nExport Now matched\nSchedule matched\nACTIVE DRIVERS matched\nActive Drivers matched\nMANAGE matched\nBulk Updation Log matched\nFLEET VIEW matched\nActions matched\nLIST VIEW matched\nhttps://uae-cabvision.machinemax.com/coaching\nschool\nCoaching matched\nCoachable Drivers matched\nCompleted Coaching Sessions matched\nhttps://uae-cabvision.machinemax.com/video-requests\nsubscriptions\nVideo Requests matched\nVideo Requests matched\nREQUEST VIDEO matched\nVideo Requests matched\nPanic Button matched\nEvent On-Demand matched\nhttps://uae-cabvision.machinemax.com/drivers\ngroup\nDrivers matched\nDriver List matched\nEXPORT arrow_drop_down matched\nADD DRIVER matched\n matched\nBATCH UPDATE\nNEW matched\nINSTALLERS matched\nInstaller List matched\nSearch for Installer\nsearch matched\nADD INSTALLER matched\nhttps://uae-cabvision.machinemax.com/challenges\ncontent_paste_search\nChallenges matched\nChallenged Events matched\nhttps://uae-cabvision.machinemax.com/reports\ndescription\nReports matched\nOVERVIEW matched\nSCHEDULE matched\nVIEW REPORT matched\nFleet Safety Report matched\nSCHEDULE matched\nDOWNLOAD REPORT matched\nkeyboard_backspace matched\nSCHEDULE matched\nVIEW REPORT matched\nkeyboard_backspace matched\nVIEW REPORT matched\nkeyboard_backspace matched\nEvent List Report matched\nDOWNLOAD REPORT matched\nDriver Privacy Mode Report matched\nDOWNLOAD REPORT matched\nEvent Count Report matched\nDOWNLOAD REPORT matched\nEXPORT HISTORY matched\nExport History info_outline matched\nhttps://uae-cabvision.machinemax.com/assets\nlocal_shipping\nAssets matched\nOVERVIEW matched\nAsset List matched\nSHOW FILTERS matched\nEXPORT ASSETS matched\nMANAGE ASSETS matched\nBatch Update matched\nBatch Provisioning matched\nDEVICES matched\nSemi-Provisioned Devices matched\nDIAGNOSTICS\n(BETA) matched\nDEVICES\n444 matched\nDEVICE WITH EVENTS\n46 matched\nCamera Visibility Events matched\nDevice Diagnostic Events matched\nDevice Online Status matched\nhttps://uae-cabvision.machinemax.com/user-management\nmanage_accounts\nUsers matched\nManage Users matched\nADD USER matched\nROLES matched\nManage Roles matched\nVIEW HIERARCHY matched\nADD ROLE matched\nACTIVITY LOG matched\nUser Activity Logs matched\nhttps://uae-cabvision.machinemax.com/configurations\nvideo_settings\nConfigurations matched\nBASIC matched\nBasic Configurations matched\nADVANCED matched\nAdvanced Configurations matched\nDriver Configurations matched\nCOACHING matched\nTAGGING matched\nOverview matched\n\n------------------------------ Captured log call -------------------------------\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:18 ********************** admin login ***********************\nINFO     test_lm_regression_suite:AdminPage.py:37 title of the page :: Sign-in\nINFO     test_lm_regression_suite:AdminPage.py:59 ***************** Admin Customre TSP ******** :: Machinemax\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:24 ********* master portal title *********** :: Master Portal\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:28 ********** Fleet portal title ************ :: Machine Max UAE Fleet Portal\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:33 ************ Fleet portal popup closed ************\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:35 ************ Trips Card is present ************ :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:37 ************ Distance (mi) presents ************ :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:39 ************ Events Per 100 Miles presents ************ :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:41 ************ Duration (hours) card presents ************ :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:44 ************ Recommended Events card present ************ :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:46 ************ Top Drivers card present ************ :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:48 ********************** Require Coaching card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:50 ********************** Event Summary card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:52 ********************** Event Trend card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:54 ********************** Safety Events Button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:60 ********************** Events View card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:62 ********************** filter_list Button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:65 ********************** List Button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:68 ********************** Trips Button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:70 ********************** Trips Tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:72 ********************** Trips List Table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:75 **********************  EXPORT OPTIONS  presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:77 **********************  Export Now button  presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:81 **********************  Schedule button  presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:85 ********************** Active Drivers Tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:88 ********************** Active Drivers Table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:91 ********************** MANAGE Tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:94 **********************  Bulk Updation Log table presents *********************** :: True \nINFO     test_lm_regression_suite:FleetPortalPage.py:574 ************ Live View page button not displayed **********\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:97 ********************** Live View Page presents *********************** :: False \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:99 ********************** FLEET VIEW button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:102 ********************** Asset Count header presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:105 ********************** LIST VIEW button presents *********************** :: True \nINFO     test_lm_regression_suite:FleetPortalPage.py:620 ************  Asset header not displayed **********\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:108 ********************** Asset header presents *********************** :: False \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:110 ********************** Coaching Page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:112 ********************** Coachable Drivers Table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:115 ********************** Completed Coaching Sessions Table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:118 ********************** Video Requests page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:121 ********************** Video Requests Table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:124 ********************** Request Video popUp presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:127 ********************** Video Requests filter presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:130 ********************** Panic Button filter presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:133 ********************** Event On-Demand filter  presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:136 ********************** Drivers page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:139 ********************** Driver List table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:142 ********************** Export button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:144 ********************** Add Driver button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:147 ********************** Driver ID/Name serach button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:150 **********************  Batch Update button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:153 ********************** Installers tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:156 ********************** Installer List  table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:160 ********************** Installer ID/Name serach button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:163 ********************** Add Installer  button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:166 ********************** Challenges page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:169 ********************** Challenge Events table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:172 ********************** Reports page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:174 ********************** Overview tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:176 ********************** Fleet SCHEDULE  button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:180 ********************** Fleet Safety View Report button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:183 ********************** Fleet Safety Report presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:186 ********************** Fleet Safety  SCHEDULE button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:190 ********************** Download Report button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:193 ********************** Back Arrow button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:196 **********************  SCHEDULE  button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:200 ********************** Coaching Session View Report button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:203 ********************** Back Arrow button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:206 ********************** Coaching Effectiveness(Driver) View Report button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:209 ********************** Back Arrow button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:212 ********************** Event List Report card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:215 ********************** DOWNLOAD REPORT  button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:218 ********************** Driver Privacy Mode Report card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:221 ********************** DOWNLOAD REPORT  button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:224 **********************  Event Count Report card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:227 ********************** DOWNLOAD REPORT  button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:230 ********************** Export History tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:233 **********************  Export History table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:236 ********************** Assets page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:238 ********************** Overview tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:240 ********************** Asset List table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:243 ********************** Show Filters button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:246 ********************** Export Assets button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:249 ********************** Manage Assets tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:252 ********************** Batch Update card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:255 ********************** Batch Provisioning card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:258 ********************** Devices tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:260 ********************** Semi Provisioned Devices table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:263 ********************** DIAGNOSTICS tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:265 ********************** TOTAL DEVICES card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:268 **********************  TOTAL EVENTS  card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:271 ********************** Camera Visibility Events table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:274 ********************** Device Diagnostic Events table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:277 ********************** Device Online Status table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:280 ********************** Users page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:283 ********************** Manage Users table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:286 ********************** Add User button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:289 ********************** Roles tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:292 ********************** Manage Roles table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:295 ********************** View Hierarchy button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:298 ********************** Add Role button presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:301 ********************** ACTIVITY LOG tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:304 **********************  User Activity Logs table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:307 ********************** Configurations page presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:310 ********************** Basic tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:313 ********************** Basic Configurations table presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:316 ********************** Advanced tab presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:319 ********************** Advanced Configurations card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:322 ********************** Driver Configurations card presents *********************** :: True \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:325 ********************** Coaching tab presents *********************** :: True \nINFO     test_lm_regression_suite:FleetPortalPage.py:1660 ************ Coaching Thresholds card not displayed **********\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:328 ********************** Coaching Thresholds card presents *********************** :: False \nINFO     test_lm_regression_suite:FleetPortalPage.py:1671 ************ Automated Coaching card not displayed **********\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:331 ********************** Automated Coaching card presents *********************** :: False \nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:334 ********************** Tagging tab presents *********************** :: True \nINFO     test_lm_regression_suite:FleetPortalPage.py:1700 Master Portal\nINFO     test_lm_regression_suite:test_LM_RegressionSuite.py:337 ********************** Overview table presents *********************** :: True\n\n&#34;}]}, &#34;renderCollapsed&#34;: [&#34;passed&#34;], &#34;initialSort&#34;: &#34;result&#34;, &#34;title&#34;: &#34;LightMetrics Technologies Pvt. Ltd&#34;}"></div>
+    <script>
+      (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+const { getCollapsedCategory, setCollapsedIds } = require('./storage.js')
+
+class DataManager {
+    setManager(data) {
+        const collapsedCategories = [...getCollapsedCategory(data.renderCollapsed)]
+        const collapsedIds = []
+        const tests = Object.values(data.tests).flat().map((test, index) => {
+            const collapsed = collapsedCategories.includes(test.result.toLowerCase())
+            const id = `test_${index}`
+            if (collapsed) {
+                collapsedIds.push(id)
+            }
+            return {
+                ...test,
+                id,
+                collapsed,
+            }
+        })
+        const dataBlob = { ...data, tests }
+        this.data = { ...dataBlob }
+        this.renderData = { ...dataBlob }
+        setCollapsedIds(collapsedIds)
+    }
+
+    get allData() {
+        return { ...this.data }
+    }
+
+    resetRender() {
+        this.renderData = { ...this.data }
+    }
+
+    setRender(data) {
+        this.renderData.tests = [...data]
+    }
+
+    toggleCollapsedItem(id) {
+        this.renderData.tests = this.renderData.tests.map((test) =>
+            test.id === id ? { ...test, collapsed: !test.collapsed } : test,
+        )
+    }
+
+    set allCollapsed(collapsed) {
+        this.renderData = { ...this.renderData, tests: [...this.renderData.tests.map((test) => (
+            { ...test, collapsed }
+        ))] }
+    }
+
+    get testSubset() {
+        return [...this.renderData.tests]
+    }
+
+    get environment() {
+        return this.renderData.environment
+    }
+
+    get initialSort() {
+        return this.data.initialSort
+    }
+}
+
+module.exports = {
+    manager: new DataManager(),
+}
+
+},{"./storage.js":8}],2:[function(require,module,exports){
+const mediaViewer = require('./mediaviewer.js')
+const templateEnvRow = document.getElementById('template_environment_row')
+const templateResult = document.getElementById('template_results-table__tbody')
+
+function htmlToElements(html) {
+    const temp = document.createElement('template')
+    temp.innerHTML = html
+    return temp.content.childNodes
+}
+
+const find = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return elem.querySelector(selector)
+}
+
+const findAll = (selector, elem) => {
+    if (!elem) {
+        elem = document
+    }
+    return [...elem.querySelectorAll(selector)]
+}
+
+const dom = {
+    getStaticRow: (key, value) => {
+        const envRow = templateEnvRow.content.cloneNode(true)
+        const isObj = typeof value === 'object' && value !== null
+        const values = isObj ? Object.keys(value).map((k) => `${k}: ${value[k]}`) : null
+
+        const valuesElement = htmlToElements(
+            values ? `<ul>${values.map((val) => `<li>${val}</li>`).join('')}<ul>` : `<div>${value}</div>`)[0]
+        const td = findAll('td', envRow)
+        td[0].textContent = key
+        td[1].appendChild(valuesElement)
+
+        return envRow
+    },
+    getResultTBody: ({ testId, id, log, extras, resultsTableRow, tableHtml, result, collapsed }) => {
+        const resultBody = templateResult.content.cloneNode(true)
+        resultBody.querySelector('tbody').classList.add(result.toLowerCase())
+        resultBody.querySelector('tbody').id = testId
+        resultBody.querySelector('.collapsible').dataset.id = id
+
+        resultsTableRow.forEach((html) => {
+            const t = document.createElement('template')
+            t.innerHTML = html
+            resultBody.querySelector('.collapsible').appendChild(t.content)
+        })
+
+        if (log) {
+            // Wrap lines starting with "E" with span.error to color those lines red
+            const wrappedLog = log.replace(/^E.*$/gm, (match) => `<span class="error">${match}</span>`)
+            resultBody.querySelector('.log').innerHTML = wrappedLog
+        } else {
+            resultBody.querySelector('.log').remove()
+        }
+
+        if (collapsed) {
+            resultBody.querySelector('.collapsible > td')?.classList.add('collapsed')
+            resultBody.querySelector('.extras-row').classList.add('hidden')
+        } else {
+            resultBody.querySelector('.collapsible > td')?.classList.remove('collapsed')
+        }
+
+        const media = []
+        extras?.forEach(({ name, format_type, content }) => {
+            if (['image', 'video'].includes(format_type)) {
+                media.push({ path: content, name, format_type })
+            }
+
+            if (format_type === 'html') {
+                resultBody.querySelector('.extraHTML').insertAdjacentHTML('beforeend', `<div>${content}</div>`)
+            }
+        })
+        mediaViewer.setup(resultBody, media)
+
+        // Add custom html from the pytest_html_results_table_html hook
+        tableHtml?.forEach((item) => {
+            resultBody.querySelector('td[class="extra"]').insertAdjacentHTML('beforeend', item)
+        })
+
+        return resultBody
+    },
+}
+
+module.exports = {
+    dom,
+    htmlToElements,
+    find,
+    findAll,
+}
+
+},{"./mediaviewer.js":6}],3:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const storageModule = require('./storage.js')
+
+const getFilteredSubSet = (filter) =>
+    manager.allData.tests.filter(({ result }) => filter.includes(result.toLowerCase()))
+
+const doInitFilter = () => {
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+}
+
+const doFilter = (type, show) => {
+    if (show) {
+        storageModule.showCategory(type)
+    } else {
+        storageModule.hideCategory(type)
+    }
+
+    const currentFilter = storageModule.getVisible()
+    const filteredSubset = getFilteredSubSet(currentFilter)
+    manager.setRender(filteredSubset)
+
+    const sortColumn = storageModule.getSort()
+    doSort(sortColumn, true)
+}
+
+module.exports = {
+    doFilter,
+    doInitFilter,
+}
+
+},{"./datamanager.js":1,"./sort.js":7,"./storage.js":8}],4:[function(require,module,exports){
+const { redraw, bindEvents, renderStatic } = require('./main.js')
+const { doInitFilter } = require('./filter.js')
+const { doInitSort } = require('./sort.js')
+const { manager } = require('./datamanager.js')
+const data = JSON.parse(document.getElementById('data-container').dataset.jsonblob)
+
+function init() {
+    manager.setManager(data)
+    doInitFilter()
+    doInitSort()
+    renderStatic()
+    redraw()
+    bindEvents()
+}
+
+init()
+
+},{"./datamanager.js":1,"./filter.js":3,"./main.js":5,"./sort.js":7}],5:[function(require,module,exports){
+const { dom, find, findAll } = require('./dom.js')
+const { manager } = require('./datamanager.js')
+const { doSort } = require('./sort.js')
+const { doFilter } = require('./filter.js')
+const {
+    getVisible,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    getSortDirection,
+    possibleFilters,
+} = require('./storage.js')
+
+const removeChildren = (node) => {
+    while (node.firstChild) {
+        node.removeChild(node.firstChild)
+    }
+}
+
+const renderStatic = () => {
+    const renderEnvironmentTable = () => {
+        const environment = manager.environment
+        const rows = Object.keys(environment).map((key) => dom.getStaticRow(key, environment[key]))
+        const table = document.getElementById('environment')
+        removeChildren(table)
+        rows.forEach((row) => table.appendChild(row))
+    }
+    renderEnvironmentTable()
+}
+
+const addItemToggleListener = (elem) => {
+    elem.addEventListener('click', ({ target }) => {
+        const id = target.parentElement.dataset.id
+        manager.toggleCollapsedItem(id)
+
+        const collapsedIds = getCollapsedIds()
+        if (collapsedIds.includes(id)) {
+            const updated = collapsedIds.filter((item) => item !== id)
+            setCollapsedIds(updated)
+        } else {
+            collapsedIds.push(id)
+            setCollapsedIds(collapsedIds)
+        }
+        redraw()
+    })
+}
+
+const renderContent = (tests) => {
+    const sortAttr = getSort(manager.initialSort)
+    const sortAsc = JSON.parse(getSortDirection())
+    const rows = tests.map(dom.getResultTBody)
+    const table = document.getElementById('results-table')
+    const tableHeader = document.getElementById('results-table-head')
+
+    const newTable = document.createElement('table')
+    newTable.id = 'results-table'
+
+    // remove all sorting classes and set the relevant
+    findAll('.sortable', tableHeader).forEach((elem) => elem.classList.remove('asc', 'desc'))
+    tableHeader.querySelector(`.sortable[data-column-type="${sortAttr}"]`)?.classList.add(sortAsc ? 'desc' : 'asc')
+    newTable.appendChild(tableHeader)
+
+    if (!rows.length) {
+        const emptyTable = document.getElementById('template_results-table__body--empty').content.cloneNode(true)
+        newTable.appendChild(emptyTable)
+    } else {
+        rows.forEach((row) => {
+            if (!!row) {
+                findAll('.collapsible td:not(.col-links', row).forEach(addItemToggleListener)
+                find('.logexpander', row).addEventListener('click',
+                    (evt) => evt.target.parentNode.classList.toggle('expanded'),
+                )
+                newTable.appendChild(row)
+            }
+        })
+    }
+
+    table.replaceWith(newTable)
+}
+
+const renderDerived = () => {
+    const currentFilter = getVisible()
+    possibleFilters.forEach((result) => {
+        const input = document.querySelector(`input[data-test-result="${result}"]`)
+        input.checked = currentFilter.includes(result)
+    })
+}
+
+const bindEvents = () => {
+    const filterColumn = (evt) => {
+        const { target: element } = evt
+        const { testResult } = element.dataset
+
+        doFilter(testResult, element.checked)
+        const collapsedIds = getCollapsedIds()
+        const updated = manager.renderData.tests.map((test) => {
+            return {
+                ...test,
+                collapsed: collapsedIds.includes(test.id),
+            }
+        })
+        manager.setRender(updated)
+        redraw()
+    }
+
+    const header = document.getElementById('environment-header')
+    header.addEventListener('click', () => {
+        const table = document.getElementById('environment')
+        table.classList.toggle('hidden')
+        header.classList.toggle('collapsed')
+    })
+
+    findAll('input[name="filter_checkbox"]').forEach((elem) => {
+        elem.addEventListener('click', filterColumn)
+    })
+
+    findAll('.sortable').forEach((elem) => {
+        elem.addEventListener('click', (evt) => {
+            const { target: element } = evt
+            const { columnType } = element.dataset
+            doSort(columnType)
+            redraw()
+        })
+    })
+
+    document.getElementById('show_all_details').addEventListener('click', () => {
+        manager.allCollapsed = false
+        setCollapsedIds([])
+        redraw()
+    })
+    document.getElementById('hide_all_details').addEventListener('click', () => {
+        manager.allCollapsed = true
+        const allIds = manager.renderData.tests.map((test) => test.id)
+        setCollapsedIds(allIds)
+        redraw()
+    })
+}
+
+const redraw = () => {
+    const { testSubset } = manager
+
+    renderContent(testSubset)
+    renderDerived()
+}
+
+module.exports = {
+    redraw,
+    bindEvents,
+    renderStatic,
+}
+
+},{"./datamanager.js":1,"./dom.js":2,"./filter.js":3,"./sort.js":7,"./storage.js":8}],6:[function(require,module,exports){
+class MediaViewer {
+    constructor(assets) {
+        this.assets = assets
+        this.index = 0
+    }
+
+    nextActive() {
+        this.index = this.index === this.assets.length - 1 ? 0 : this.index + 1
+        return [this.activeFile, this.index]
+    }
+
+    prevActive() {
+        this.index = this.index === 0 ? this.assets.length - 1 : this.index -1
+        return [this.activeFile, this.index]
+    }
+
+    get currentIndex() {
+        return this.index
+    }
+
+    get activeFile() {
+        return this.assets[this.index]
+    }
+}
+
+
+const setup = (resultBody, assets) => {
+    if (!assets.length) {
+        resultBody.querySelector('.media').classList.add('hidden')
+        return
+    }
+
+    const mediaViewer = new MediaViewer(assets)
+    const container = resultBody.querySelector('.media-container')
+    const leftArrow = resultBody.querySelector('.media-container__nav--left')
+    const rightArrow = resultBody.querySelector('.media-container__nav--right')
+    const mediaName = resultBody.querySelector('.media__name')
+    const counter = resultBody.querySelector('.media__counter')
+    const imageEl = resultBody.querySelector('img')
+    const sourceEl = resultBody.querySelector('source')
+    const videoEl = resultBody.querySelector('video')
+
+    const setImg = (media, index) => {
+        if (media?.format_type === 'image') {
+            imageEl.src = media.path
+
+            imageEl.classList.remove('hidden')
+            videoEl.classList.add('hidden')
+        } else if (media?.format_type === 'video') {
+            sourceEl.src = media.path
+
+            videoEl.classList.remove('hidden')
+            imageEl.classList.add('hidden')
+        }
+
+        mediaName.innerText = media?.name
+        counter.innerText = `${index + 1} / ${assets.length}`
+    }
+    setImg(mediaViewer.activeFile, mediaViewer.currentIndex)
+
+    const moveLeft = () => {
+        const [media, index] = mediaViewer.prevActive()
+        setImg(media, index)
+    }
+    const doRight = () => {
+        const [media, index] = mediaViewer.nextActive()
+        setImg(media, index)
+    }
+    const openImg = () => {
+        window.open(mediaViewer.activeFile.path, '_blank')
+    }
+    if (assets.length === 1) {
+        container.classList.add('media-container--fullscreen')
+    } else {
+        leftArrow.addEventListener('click', moveLeft)
+        rightArrow.addEventListener('click', doRight)
+    }
+    imageEl.addEventListener('click', openImg)
+}
+
+module.exports = {
+    setup,
+}
+
+},{}],7:[function(require,module,exports){
+const { manager } = require('./datamanager.js')
+const storageModule = require('./storage.js')
+
+const genericSort = (list, key, ascending, customOrder) => {
+    let sorted
+    if (customOrder) {
+        sorted = list.sort((a, b) => {
+            const aValue = a.result.toLowerCase()
+            const bValue = b.result.toLowerCase()
+
+            const aIndex = customOrder.findIndex((item) => item.toLowerCase() === aValue)
+            const bIndex = customOrder.findIndex((item) => item.toLowerCase() === bValue)
+
+            // Compare the indices to determine the sort order
+            return aIndex - bIndex
+        })
+    } else {
+        sorted = list.sort((a, b) => a[key] === b[key] ? 0 : a[key] > b[key] ? 1 : -1)
+    }
+
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const durationSort = (list, ascending) => {
+    const parseDuration = (duration) => {
+        if (duration.includes(':')) {
+            // If it's in the format "HH:mm:ss"
+            const [hours, minutes, seconds] = duration.split(':').map(Number)
+            return (hours * 3600 + minutes * 60 + seconds) * 1000
+        } else {
+            // If it's in the format "nnn ms"
+            return parseInt(duration)
+        }
+    }
+    const sorted = list.sort((a, b) => parseDuration(a['duration']) - parseDuration(b['duration']))
+    if (ascending) {
+        sorted.reverse()
+    }
+    return sorted
+}
+
+const doInitSort = () => {
+    const type = storageModule.getSort(manager.initialSort)
+    const ascending = storageModule.getSortDirection()
+    const list = manager.testSubset
+    const initialOrder = ['Error', 'Failed', 'Rerun', 'XFailed', 'XPassed', 'Skipped', 'Passed']
+
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    if (type?.toLowerCase() === 'original') {
+        manager.setRender(list)
+    } else {
+        let sortedList
+        switch (type) {
+        case 'duration':
+            sortedList = durationSort(list, ascending)
+            break
+        case 'result':
+            sortedList = genericSort(list, type, ascending, initialOrder)
+            break
+        default:
+            sortedList = genericSort(list, type, ascending)
+            break
+        }
+        manager.setRender(sortedList)
+    }
+}
+
+const doSort = (type, skipDirection) => {
+    const newSortType = storageModule.getSort(manager.initialSort) !== type
+    const currentAsc = storageModule.getSortDirection()
+    let ascending
+    if (skipDirection) {
+        ascending = currentAsc
+    } else {
+        ascending = newSortType ? false : !currentAsc
+    }
+    storageModule.setSort(type)
+    storageModule.setSortDirection(ascending)
+
+    const list = manager.testSubset
+    const sortedList = type === 'duration' ? durationSort(list, ascending) : genericSort(list, type, ascending)
+    manager.setRender(sortedList)
+}
+
+module.exports = {
+    doInitSort,
+    doSort,
+}
+
+},{"./datamanager.js":1,"./storage.js":8}],8:[function(require,module,exports){
+const possibleFilters = [
+    'passed',
+    'skipped',
+    'failed',
+    'error',
+    'xfailed',
+    'xpassed',
+    'rerun',
+]
+
+const getVisible = () => {
+    const url = new URL(window.location.href)
+    const settings = new URLSearchParams(url.search).get('visible')
+    const lower = (item) => {
+        const lowerItem = item.toLowerCase()
+        if (possibleFilters.includes(lowerItem)) {
+            return lowerItem
+        }
+        return null
+    }
+    return settings === null ?
+        possibleFilters :
+        [...new Set(settings?.split(',').map(lower).filter((item) => item))]
+}
+
+const hideCategory = (categoryToHide) => {
+    const url = new URL(window.location.href)
+    const visibleParams = new URLSearchParams(url.search).get('visible')
+    const currentVisible = visibleParams ? visibleParams.split(',') : [...possibleFilters]
+    const settings = [...new Set(currentVisible)].filter((f) => f !== categoryToHide).join(',')
+
+    url.searchParams.set('visible', settings)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const showCategory = (categoryToShow) => {
+    if (typeof window === 'undefined') {
+        return
+    }
+    const url = new URL(window.location.href)
+    const currentVisible = new URLSearchParams(url.search).get('visible')?.split(',').filter(Boolean) ||
+        [...possibleFilters]
+    const settings = [...new Set([categoryToShow, ...currentVisible])]
+    const noFilter = possibleFilters.length === settings.length || !settings.length
+
+    noFilter ? url.searchParams.delete('visible') : url.searchParams.set('visible', settings.join(','))
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getSort = (initialSort) => {
+    const url = new URL(window.location.href)
+    let sort = new URLSearchParams(url.search).get('sort')
+    if (!sort) {
+        sort = initialSort || 'result'
+    }
+    return sort
+}
+
+const setSort = (type) => {
+    const url = new URL(window.location.href)
+    url.searchParams.set('sort', type)
+    window.history.pushState({}, null, unescape(url.href))
+}
+
+const getCollapsedCategory = (renderCollapsed) => {
+    let categories
+    if (typeof window !== 'undefined') {
+        const url = new URL(window.location.href)
+        const collapsedItems = new URLSearchParams(url.search).get('collapsed')
+        switch (true) {
+        case !renderCollapsed && collapsedItems === null:
+            categories = ['passed']
+            break
+        case collapsedItems?.length === 0 || /^["']{2}$/.test(collapsedItems):
+            categories = []
+            break
+        case /^all$/.test(collapsedItems) || collapsedItems === null && /^all$/.test(renderCollapsed):
+            categories = [...possibleFilters]
+            break
+        default:
+            categories = collapsedItems?.split(',').map((item) => item.toLowerCase()) || renderCollapsed
+            break
+        }
+    } else {
+        categories = []
+    }
+    return categories
+}
+
+const getSortDirection = () => JSON.parse(sessionStorage.getItem('sortAsc')) || false
+const setSortDirection = (ascending) => sessionStorage.setItem('sortAsc', ascending)
+
+const getCollapsedIds = () => JSON.parse(sessionStorage.getItem('collapsedIds')) || []
+const setCollapsedIds = (list) => sessionStorage.setItem('collapsedIds', JSON.stringify(list))
+
+module.exports = {
+    getVisible,
+    hideCategory,
+    showCategory,
+    getCollapsedIds,
+    setCollapsedIds,
+    getSort,
+    setSort,
+    getSortDirection,
+    setSortDirection,
+    getCollapsedCategory,
+    possibleFilters,
+}
+
+},{}]},{},[4]);
+    </script>
+  </footer>
+</html>

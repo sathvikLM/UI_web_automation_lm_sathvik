@@ -7,10 +7,13 @@ from selenium import webdriver
 import time
 from selenium.webdriver.chrome import service
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.chrome.service import Service
+from selenium.webdriver.chrome.service import Service as ChromeService
 from selenium.webdriver.common.by import By
 from slugify import slugify
 from webdriver_manager.chrome import ChromeDriverManager
+from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.firefox import GeckoDriverManager
+
 #
 # @pytest.fixture(scope="class", autouse=True)
 # def setup(request):
@@ -34,7 +37,9 @@ from webdriver_manager.chrome import ChromeDriverManager
 #     class TestYourWebsite:
 #         def test_example(self):
 #             pass
+
 driver = None
+
 def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome"
@@ -50,12 +55,12 @@ def setup(request):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         # driver = webdriver.Chrome(ChromeDriverManager().install())
-	driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
-        #driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        # driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
         # driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
     elif browser_name == "firefox":
-        #driver = webdriver.Firefox(executable_path="C:\\geckodriver.exe")
-	driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
+        # driver = webdriver.Firefox(executable_path="C:\\geckodriver.exe")
+        driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif browser_name == "IE":
         print("IE driver")
     driver.get("https://admin.lightmetrics.co/")
@@ -63,42 +68,9 @@ def setup(request):
     print(driver.title)
     request.cls.driver = driver
 
-    # yield
-    # driver.close()
-    # @pytest.mark.hookwrapper
-    # def pytest_runtest_makereport(item):
-    #     """
-    #          Extends the PyTest Plugin to take and embed screenshot in html report, whenever test fails.
-    #          :param item:
-    #          """
-    #     pytest_html = item.config.pluginmanager.getplugin('html')
-    #     outcome = yield
-    #     report = outcome.get_result()
-    #     extra = getattr(report, 'extra', [])
-    #
-    #     if report.when == 'call' or report.when == "setup":
-    #         xfail = hasattr(report, 'wasxfail')
-    #         if (report.skipped and xfail) or (report.failed and not xfail):
-    #             #page = item.funcargs["page"]
-    #             screenshot_dir = Path("Screenshots")
-    #             screenshot_dir.mkdir(exist_ok=True)
-    #             #screen_file = str(screenshot_dir / f"{slugify(item.nodeid)}.png")
-    #             #page.screenshot(path=screen_file)
-    #             file_name = str("./screenshot_dir/"+report.nodeid.replace("::", "_") + ".png")
-    #             _capture_screenshot(file_name)
-    #             if file_name:
-    #                 html = '<div><img src="%s" alt="screenshot" style="width:304px;height:228px;" ' \
-    #                        'onclick="window.open(this.src)" align="right"/></div>' % file_name
-    #                 extra.append(pytest_html.extras.html(html))
-    #         report.extra = extra
-
-
-
-
     def _capture_screenshot(name):
         driver.get_screenshot_as_file(name)
 
-    # driver.save_screenshot(name)
     @pytest.fixture()
     def set_up_tear_down_no_login(request) -> None:
         request.set_viewport_size({"width": 1536, "height": 834})
@@ -126,39 +98,37 @@ def setup(request):
                 extra.append(pytest_html.extras.png(screen_file))
             report.extra = extra
 
-
-
 # **************** HTML Report ****************** :-
 
 # ########## Changing Title name ############ :-
 def pytest_html_report_title(report):
-	''' modifying the title of html report'''
-	report.title = "LightMetrics Technologies Pvt. Ltd"
+    ''' modifying the title of html report'''
+    report.title = "LightMetrics Technologies Pvt. Ltd"
 
 # ############ Changing Environment ############# :-
 def pytest_configure(config):
-	username = "Sreenivasulu Akki"
-    #manager = "Divya"
+    username = "Sreenivasulu Akki"
+    # manager = "Divya"
 
-	# getting python version
-	from platform import python_version
-	py_version = python_version()
-	# overwriting old parameters with new parameters
-	config._metadata = {
-		"tester": username,
-		"python_version": py_version,
+    # getting python version
+    from platform import python_version
+    py_version = python_version()
+    # overwriting old parameters with new parameters
+    config._metadata = {
+        "tester": username,
+        "python_version": py_version,
         "manager": "Divya Gajanana",
         "team": "QA_Automation",
-        "testing_suite" : "Regression Testing",
-        "portal" : "Rebranding Portal's"
-	}
+        "testing_suite": "Regression Testing",
+        "portal": "Rebranding Portal's"
+    }
 
 # ############## Changing Summary ################ :-
 @pytest.mark.optionalhook
 def pytest_html_results_summary(prefix, summary, postfix):
-	''' modifying the summary in pytest environment'''
+    ''' modifying the summary in pytest environment'''
 
-	from py.xml import html
-	prefix.extend([html.h3(" TSP : 'Lmpresales' ")])
-	summary.extend([html.h3(" ")])
-	postfix.extend([html.h3(" ")])
+    from py.xml import html
+    prefix.extend([html.h3(" TSP : 'Lmpresales' ")])
+    summary.extend([html.h3(" ")])
+    postfix.extend([html.h3(" ")])

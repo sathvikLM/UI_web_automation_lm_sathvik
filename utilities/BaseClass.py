@@ -12,16 +12,21 @@ from selenium.webdriver.support.select import Select
 class BaseClass:
 
     def getLogger(self):
-        loggerName = inspect.stack()[1][3]
-        logger = logging.getLogger(loggerName)
-        fileHandler = logging.FileHandler('./Logs/logfile.log')
-        formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
-        fileHandler.setFormatter(formatter)
+    loggerName = inspect.stack()[1][3]
+    logger = logging.getLogger(loggerName)
 
-        logger.addHandler(fileHandler)  # filehandler object
+    # Ensure Logs directory exists before creating the logfile
+    logs_dir = './Logs'
+    if not os.path.exists(logs_dir):
+        os.makedirs(logs_dir)
 
-        logger.setLevel(logging.DEBUG)
-        return logger
+    fileHandler = logging.FileHandler(f'{logs_dir}/logfile.log')
+    formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
+    fileHandler.setFormatter(formatter)
+
+    logger.addHandler(fileHandler) 
+    logger.setLevel(logging.DEBUG)
+    return logger
 
     def verifyLinkPresence(self, text):
         element = WebDriverWait(self.driver, 10).until(

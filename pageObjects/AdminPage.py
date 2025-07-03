@@ -1,5 +1,4 @@
 import time
-from telnetlib import EC
 from typing import List
 
 import pytest
@@ -7,6 +6,7 @@ from selenium.common import NoSuchElementException, StaleElementReferenceExcepti
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+
 
 class AdminPage:
 

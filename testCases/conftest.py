@@ -50,10 +50,12 @@ def setup(request):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         # driver = webdriver.Chrome(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
+	driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()))
+        #driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
         # driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
     elif browser_name == "firefox":
-        driver = webdriver.Firefox(executable_path="C:\\geckodriver.exe")
+        #driver = webdriver.Firefox(executable_path="C:\\geckodriver.exe")
+	driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif browser_name == "IE":
         print("IE driver")
     driver.get("https://admin.lightmetrics.co/")

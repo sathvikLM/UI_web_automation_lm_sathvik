@@ -13,6 +13,7 @@ webdriver-manager==4.0.2
 python-slugify==8.0.4
 keyboard==0.13.5
 python-dotenv==1.1.1
+pyautogui
 
 # Core Dependencies (pulled in automatically by the above)
 allure-python-commons==2.14.3

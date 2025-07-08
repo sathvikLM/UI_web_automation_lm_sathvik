@@ -12,14 +12,17 @@ pipeline {
             steps {
                 sh '''
                     set -e
+                    echo "Creating Python virtual environment..."
                     $PYTHON -m venv $VENV_DIR
+                    echo "Activating virtual environment..."
                     . $VENV_DIR/bin/activate
-                    python -m ensurepip --upgrade
+                    echo "Upgrading pip and installing dependencies..."
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
             }
         }
+
 
         stage('Run Pytest with Allure') {
             steps {

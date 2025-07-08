@@ -6,6 +6,20 @@ pipeline {
         VENV_DIR = ".venv"
         ALLURE_RESULTS = "allure-results"
     }
+    environment {
+    // This PATH ensures pyenv's shims are found first
+    PATH = "/var/lib/jenkins/.pyenv/shims:/var/lib/jenkins/.pyenv/bin:${env.PATH}"
+    
+    // Explicitly set the python version. The PYTHON variable is not strictly needed
+    // if the PATH is set correctly, but this is more robust.
+    // PYTHON = "/var/lib/jenkins/.pyenv/versions/3.9.18/bin/python" 
+
+    // Tell pyenv which version to use for commands like 'python'
+    PYENV_VERSION = "3.9.18"
+
+    VENV_DIR = ".venv"
+    ALLURE_RESULTS = "allure-results"
+}
 
     stages {
         stage('Setup Python Virtual Env') {

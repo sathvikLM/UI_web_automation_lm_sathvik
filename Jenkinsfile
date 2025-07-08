@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = "C:\\Python39\\python.exe"    // Adjust to your installed Python path
+        PYTHON = "python3"             // Assumes python3 is installed and in PATH
         VENV_DIR = ".venv"
         ALLURE_RESULTS = "allure-results"
     }
@@ -21,15 +21,21 @@ pipeline {
 
         stage('Setup Python Env') {
             steps {
-                bat "${PYTHON} -m venv ${VENV_DIR}"
-                bat "${VENV_DIR}\\Scripts\\activate && pip install --upgrade pip"
-                bat "${VENV_DIR}\\Scripts\\activate && pip install -r requirements.txt"
+                sh """
+                    ${PYTHON} -m venv ${VENV_DIR}
+                    source ${VENV_DIR}/bin/activate
+                    pip install --upgrade pip
+                    pip install -r requirements.txt
+                """
             }
         }
 
         stage('Run Pytest with Allure') {
             steps {
-                bat "${VENV_DIR}\\Scripts\\activate && pytest --alluredir=${ALLURE_RESULTS}"
+                sh """
+                    source ${VENV_DIR}/bin/activate
+                    pytest --alluredir=${ALLURE_RESULTS}
+                """
             }
         }
 
@@ -43,7 +49,10 @@ pipeline {
 
         stage('Publish HTML Report') {
             steps {
-                bat "${VENV_DIR}\\Scripts\\activate && pytest --html=report.html --self-contained-html"
+                sh """
+                    source ${VENV_DIR}/bin/activate
+                    pytest --html=report.html --self-contained-html
+                """
                 publishHTML(target: [
                     allowMissing: false,
                     alwaysLinkToLastBuild: true,

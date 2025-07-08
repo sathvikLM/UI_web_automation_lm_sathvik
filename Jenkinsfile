@@ -2,14 +2,13 @@ pipeline {
     agent any
 
     environment {
-        PYTHON = "python3"             // Assumes python3 is installed and in PATH
+        PYTHON = "python3"
         VENV_DIR = ".venv"
         ALLURE_RESULTS = "allure-results"
     }
 
     triggers {
-        // Every Monday at 11:00 AM
-        cron('0 11 * * 1')
+        cron('0 11 * * 1') // Every Monday at 11:00 AM
     }
 
     stages {
@@ -22,8 +21,9 @@ pipeline {
         stage('Setup Python Env') {
             steps {
                 sh """
+                    set -e
                     ${PYTHON} -m venv ${VENV_DIR}
-                    source ${VENV_DIR}/bin/activate
+                    . ${VENV_DIR}/bin/activate
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 """
@@ -33,7 +33,8 @@ pipeline {
         stage('Run Pytest with Allure') {
             steps {
                 sh """
-                    source ${VENV_DIR}/bin/activate
+                    set -e
+                    . ${VENV_DIR}/bin/activate
                     pytest --alluredir=${ALLURE_RESULTS}
                 """
             }
@@ -50,7 +51,8 @@ pipeline {
         stage('Publish HTML Report') {
             steps {
                 sh """
-                    source ${VENV_DIR}/bin/activate
+                    set -e
+                    . ${VENV_DIR}/bin/activate
                     pytest --html=report.html --self-contained-html
                 """
                 publishHTML(target: [

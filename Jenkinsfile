@@ -29,8 +29,10 @@ pipeline {
         stage('Run Pytest with Allure') {
             steps {
                 sh '''
-                    . $VENV_DIR/bin/activate
-                    pytest --alluredir=$ALLURE_RESULTS
+                . $VENV_DIR/bin/activate
+                # The xvfb-run command creates a virtual display just for this single command.
+                # --auto-servernum finds an available display number automatically to avoid conflicts.
+                xvfb-run --auto-servernum pytest --alluredir=$ALLURE_RESULTS
                 '''
             }
         }

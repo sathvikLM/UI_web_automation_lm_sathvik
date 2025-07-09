@@ -4,3 +4,4 @@ pytest
 allure-pytest
 pytest-html
 pytest-xdist
+python-slugify

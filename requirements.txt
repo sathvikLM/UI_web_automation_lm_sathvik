@@ -1,7 +1,6 @@
 selenium
 webdriver-manager
 pytest
-pytest-allure-adaptor
 allure-pytest
 pytest-html
 pytest-xdist

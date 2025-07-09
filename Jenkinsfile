@@ -7,19 +7,9 @@ pipeline {
         ALLURE_RESULTS = "allure-results"
         PATH = "/var/lib/jenkins/.pyenv/shims:/var/lib/jenkins/.pyenv/bin:${env.PATH}"
         PYENV_VERSION = "3.9.18"
-        DISPLAY = ':99'
     }
 
     stages {
-        stage('Start Xvfb') {
-            steps {
-                sh '''
-                    Xvfb :99 -screen 0 1920x1080x24 &
-                    sleep 3
-                '''
-            }
-        }
-
         stage('Setup Python Virtual Env') {
             steps {
                 sh '''
@@ -33,18 +23,18 @@ pipeline {
             }
         }
 
-        stage('Run Pytest with Allure') {
+        stage('Run Pytest with Allure (Xvfb)') {
             steps {
                 sh '''
                     . $VENV_DIR/bin/activate
-                    pytest --alluredir=$ALLURE_RESULTS
+                    xvfb-run -a pytest --alluredir=allure-results
                 '''
             }
         }
 
         stage('Generate Allure Report') {
             steps {
-                sh 'allure generate $ALLURE_RESULTS --clean -o allure-report'
+                sh 'allure generate allure-results --clean -o allure-report'
             }
         }
 
@@ -76,7 +66,6 @@ pipeline {
         always {
             echo "Cleaning up virtual environment"
             sh "rm -rf $VENV_DIR"
-            sh 'pkill Xvfb || true'
         }
     }
 }

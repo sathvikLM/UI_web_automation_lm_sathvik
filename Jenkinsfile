@@ -1,14 +1,25 @@
 pipeline {
     agent any
 
-       environment {
+    environment {
         PYTHON = "python3.9"
         VENV_DIR = ".venv"
         ALLURE_RESULTS = "allure-results"
         PATH = "/var/lib/jenkins/.pyenv/shims:/var/lib/jenkins/.pyenv/bin:${env.PATH}"
         PYENV_VERSION = "3.9.18"
+        DISPLAY = ':99'
     }
+
     stages {
+        stage('Start Xvfb') {
+            steps {
+                sh '''
+                    Xvfb :99 -screen 0 1920x1080x24 &
+                    sleep 3
+                '''
+            }
+        }
+
         stage('Setup Python Virtual Env') {
             steps {
                 sh '''
@@ -65,6 +76,7 @@ pipeline {
         always {
             echo "Cleaning up virtual environment"
             sh "rm -rf $VENV_DIR"
+            sh 'pkill Xvfb || true'
         }
     }
 }

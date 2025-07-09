@@ -6,4 +6,5 @@ pytest-html
 pytest-xdist
 python-slugify
 keyboard
+pyautogui
 

@@ -23,11 +23,11 @@ pipeline {
             }
         }
 
-        stage('Run Pytest with Allure (Xvfb)') {
+        stage('Run Pytest with Allure') {
             steps {
                 sh '''
                     . $VENV_DIR/bin/activate
-                    xvfb-run -a pytest --alluredir=allure-results
+                    pytest --alluredir=allure-results
                 '''
             }
         }

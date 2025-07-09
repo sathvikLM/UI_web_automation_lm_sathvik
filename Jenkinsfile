@@ -25,37 +25,6 @@ pipeline {
             }
         }
 
-
-        stage('Run Pytest with Allure') {
-            steps {
-                sh '''
-                . $VENV_DIR/bin/activate
-                # The xvfb-run command creates a virtual display just for this single command.
-                # --auto-servernum finds an available display number automatically to avoid conflicts.
-                xvfb-run --auto-servernum pytest --alluredir=$ALLURE_RESULTS
-                '''
-            }
-        }
-
-        stage('Generate Allure Report') {
-            steps {
-                sh 'allure generate $ALLURE_RESULTS --clean -o allure-report'
-            }
-        }
-
-        stage('Publish Allure HTML Report') {
-            steps {
-                publishHTML([
-                    reportDir: 'allure-report',
-                    reportFiles: 'index.html',
-                    reportName: 'Allure Report',
-                    allowMissing: false,
-                    alwaysLinkToLastBuild: true,
-                    keepAll: true
-                ])
-            }
-        }
-
         stage('Email Report') {
             steps {
                 emailext(

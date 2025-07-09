@@ -1,12 +1,13 @@
 pipeline {
     agent any
 
-    environment {
+       environment {
         PYTHON = "python3.9"
         VENV_DIR = ".venv"
         ALLURE_RESULTS = "allure-results"
+        PATH = "/var/lib/jenkins/.pyenv/shims:/var/lib/jenkins/.pyenv/bin:${env.PATH}"
+        PYENV_VERSION = "3.9.18"
     }
-
     stages {
         stage('Setup Python Virtual Env') {
             steps {

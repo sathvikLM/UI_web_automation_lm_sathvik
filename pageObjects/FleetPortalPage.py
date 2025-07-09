@@ -2,7 +2,9 @@ import time
 
 import pytest
 import keyboard
-import pyautogui
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+#import pyautogui
 from selenium.common import NoSuchElementException, TimeoutException
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import wait
@@ -502,7 +504,10 @@ class FleetPortalPage:
             trips_schedule1 = self.driver.find_element(*FleetPortalPage.trips_schedule)
             status = trips_schedule1.is_displayed()
             print(trips_schedule1.text + " matched")
-            pyautogui.press('esc')
+            #pyautogui.press('esc')
+            # Press ESC using ActionChains instead of pyautogui
+            actions = ActionChains(self.driver)
+            actions.send_keys(Keys.ESCAPE).perform()
             time.sleep(5)
         except NoSuchElementException:
             pytest.skip("************ Schedule button not displayed **********")

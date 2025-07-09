@@ -55,7 +55,7 @@ def setup(request):
         options.add_argument('--no-sandbox')
         options.add_argument('--disable-dev-shm-usage')
         # driver = webdriver.Chrome(ChromeDriverManager().install())
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager(version="114.0.5735.90").install()), options=options)
         # driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
         # driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
     elif browser_name == "firefox":

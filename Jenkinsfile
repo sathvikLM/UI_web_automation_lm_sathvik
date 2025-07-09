@@ -30,7 +30,7 @@ pipeline {
                 emailext(
                     subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                     body: "Allure report for build: ${env.BUILD_URL}allure-report",
-                    to: "vidya.hampiholi@lightmetrics.co"
+                    to: "sathviksecond@gmail.vom"
                 )
             }
         }

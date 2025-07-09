@@ -502,7 +502,7 @@ class FleetPortalPage:
             trips_schedule1 = self.driver.find_element(*FleetPortalPage.trips_schedule)
             status = trips_schedule1.is_displayed()
             print(trips_schedule1.text + " matched")
-            #pyautogui.press('esc')
+            pyautogui.press('esc')
             time.sleep(5)
         except NoSuchElementException:
             pytest.skip("************ Schedule button not displayed **********")

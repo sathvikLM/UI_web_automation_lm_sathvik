@@ -40,6 +40,7 @@ class AdminPage:
 
     @pytest.mark.skip()
     def customer_tsp(self, log, config):
+        wait = WebDriverWait(self.driver, 20)
         time.sleep(5)
         self.driver.find_element(*AdminPage.lmpresales).click()
         self.driver.find_element(*AdminPage.customerName).clear()
@@ -58,7 +59,9 @@ class AdminPage:
         # return tsp_texts
         log.info("***************** Admin Customre TSP ******** :: " + tsp_names)
         self.driver.find_element(*AdminPage.autoComplete).click()
-        self.driver.find_element(*AdminPage.applyBtn).click()
+        apply_button = wait.until(EC.element_to_be_clickable(AdminPage.applyBtn))
+        apply_button.click()
+        #self.driver.find_element(*AdminPage.applyBtn).click()
         time.sleep(3)
         self.driver.find_element(*AdminPage.mainMenu).click()
         time.sleep(2)

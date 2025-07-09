@@ -8,7 +8,7 @@ from pageObjects.MasterPortalPage import MasterPortalPage
 from utilities.BaseClass import BaseClass
 from utilities.customLogger import LogGen
 
-
+@pytest.mark.usefixtures("setup")
 class Test_LM_Regression_Suite(BaseClass):
     logger = LogGen.loggen()
 

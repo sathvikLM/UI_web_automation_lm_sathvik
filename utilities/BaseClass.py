@@ -31,67 +31,47 @@ class BaseClass:
 
         return logger
 
+
     def ensure_sidebar_expanded(self, side_menu_locator, toggle_button_locator):
         """
-        Ensures sidebar is expanded before interacting with menu elements.
-        Works around headless/Windows UI issues in Jenkins using JS click + visibility checks.
-        """
+            Ensures sidebar is expanded before interacting with menu elements.
+
+            Fix added by Vidya Hampiholi (LightMetrics QA) to address a UI issue where the sidebar
+            was collapsed by default on Windows and Jenkins, preventing navigation item interaction.
+            """
         log = self.getLogger()
         wait = WebDriverWait(self.driver, 20)
 
         try:
             log.info("Waiting for sidebar container and toggle button.")
-            sidebar = wait.until(EC.presence_of_element_located(side_menu_locator))
-            toggle_button = wait.until(EC.presence_of_element_located(toggle_button_locator))
+            menu_element = wait.until(EC.presence_of_element_located(side_menu_locator))
+            toggle_button = wait.until(EC.element_to_be_clickable(toggle_button_locator))
 
-            # If already expanded
-            menu_class = sidebar.get_attribute("class")
+            menu_class = menu_element.get_attribute("class")
             log.debug(f"Initial sidebar class: {menu_class}")
-            if "mat-drawer-opened" in menu_class:
-                log.info("Sidebar already expanded.")
-                return
 
-            # Scroll into view
-            self.driver.execute_script("arguments[0].scrollIntoView(true);", toggle_button)
-            time.sleep(1)
-
-            try:
-                wait.until(EC.element_to_be_clickable(toggle_button_locator))
+            if "mat-drawer-opened" not in menu_class:
+                log.info("Sidebar collapsed. Expanding it.")
                 toggle_button.click()
-            except Exception as e:
-                log.warning(f"Standard click failed: {e}")
-
-            # Wait for sidebar to open (check class change)
-            for i in range(5):
-                time.sleep(1)
-                menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
-                log.debug(f"Sidebar class after toggle attempt {i + 1}: {menu_class}")
-                if "mat-drawer-opened" in menu_class:
-                    log.info("Sidebar expanded successfully.")
-                    return
-
-            # Final fallback: click again
-            log.warning("Standard click did not expand sidebar. Trying JavaScript click.")
-            self.driver.execute_script("arguments[0].click();", toggle_button)
-            time.sleep(2)
-
-            for i in range(5):
-                menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
-                log.debug(f"Sidebar class after JS click attempt {i + 1}: {menu_class}")
-                if "mat-drawer-opened" in menu_class:
-                    log.info("Sidebar expanded successfully using JavaScript click.")
-                    return
                 time.sleep(1)
 
-            # If still failed
-            screenshot_path = "/var/lib/jenkins/workspace/sidebar_failed.png"
-            self.driver.save_screenshot(screenshot_path)
-            log.error(f"Sidebar failed to expand. Screenshot saved: {screenshot_path}")
-            raise TimeoutException("Sidebar did not expand after multiple attempts.")
+                for i in range(10):
+                    menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
+                    if "mat-drawer-opened" in menu_class:
+                        log.info("Sidebar expanded successfully.")
+                        return
+                    time.sleep(1)
 
-        except Exception as e:
-            log.exception(f"Failed to expand sidebar: {e}")
-            raise
+                log.error("Sidebar did not expand after clicking toggle.")
+                raise TimeoutException("Sidebar did not expand after clicking toggle.")
+            else:
+                log.info("Sidebar is already expanded.")
+        except TimeoutException as e:
+            log.error("Timeout while expanding sidebar: " + str(e))
+        except NoSuchElementException as e:
+            log.error(f"Sidebar or toggle not found: {e}")
+        except ElementNotInteractableException as e:
+            log.error(f"Toggle button not interactable: {e}")
 
     def verifyLinkPresence(self, text):
         element = WebDriverWait(self.driver, 10).until(

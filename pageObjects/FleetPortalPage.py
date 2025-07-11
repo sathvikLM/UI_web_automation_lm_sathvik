@@ -11,11 +11,15 @@ from selenium.webdriver.support import wait
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+from utilities.BaseClass import BaseClass
 
-class FleetPortalPage:
+
+
+class FleetPortalPage(BaseClass):
 
     def __init__(self, driver):
         self.driver = driver
+        super().__init__()
 
     #portal_version = (By.XPATH, "//h3[text()='Feature Announcement']/following-sibling::mat-chip-list/div/mat-chip")
    # portal_version = (By.XPATH, "//app-feature-announcement[@class='ng-star-inserted']/div/div/div/mat-chip-list/div/mat-chip")
@@ -30,6 +34,8 @@ class FleetPortalPage:
     event_summary = (By.XPATH, "(//div[@class='container']/div//div/h3)[4]")
     event_trend = (By.XPATH, "(//div[@class='container']/div//div/h3)[5]")
     # SAFETY EVENTS
+    toggle_menu = (By.XPATH, "//mat-icon[normalize-space()='menu']")
+    side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
     safety_events_btn = (By.XPATH, "//span[text()='Safety Events']/ancestor::span/parent::a")
     next_btn = (By.XPATH, "//span[text()='Next']")
     done_btn = (By.XPATH, "//span[text()='Done']")
@@ -326,6 +332,8 @@ class FleetPortalPage:
     def validate_safety_events(self, log):
         status = False
         try:
+            # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
+            self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
             self.driver.find_element(*FleetPortalPage.safety_events_btn).click()
             time.sleep(5)
             safety_events1 = self.driver.find_element(*FleetPortalPage.safety_events_btn)
@@ -601,17 +609,61 @@ class FleetPortalPage:
             log.info("************ Asset Count header not displayed **********")
         return status
 
+    # def validate_live_view_page_list_view_btn(self, log):
+    #     status = False
+    #     try:
+    #         self.driver.find_element(*FleetPortalPage.list_view).click()
+    #         time.sleep(5)
+    #         list_view1 = self.driver.find_element(*FleetPortalPage.list_view)
+    #         status = list_view1.is_displayed()
+    #         print(list_view1.text + " matched")
+    #
+    #     except NoSuchElementException:
+    #         log.info("************  LIST VIEW button not displayed **********")
+    #     return status
+
     def validate_live_view_page_list_view_btn(self, log):
         status = False
+        wait = WebDriverWait(self.driver, 20)
+
         try:
-            self.driver.find_element(*FleetPortalPage.list_view).click()
-            time.sleep(5)
-            list_view1 = self.driver.find_element(*FleetPortalPage.list_view)
-            status = list_view1.is_displayed()
-            print(list_view1.text + " matched")
+            #Wait until the "Fetching live asset details..." overlay disappears
+            try:
+                wait.until(EC.invisibility_of_element_located(
+                    (By.XPATH, "//div[normalize-space()='Fetching live asset details...']")
+                ))
+                log.info("Overlay 'Fetching live asset details...' has disappeared.")
+            except TimeoutException:
+                log.warning("Overlay 'Fetching live asset details...' did not disappear in time. Proceeding anyway.")
+            # Optionally wait for any drawer overlay to disappear too
+            try:
+                wait.until(EC.invisibility_of_element_located(
+                    (By.CLASS_NAME, "mat-drawer-inner-container")
+                ))
+                log.info("Overlay 'mat-drawer-inner-container' has disappeared.")
+            except TimeoutException:
+                log.warning("Overlay 'mat-drawer-inner-container' did not disappear in time. Proceeding anyway.")
+
+            # Wait until the element is clickable
+            element = wait.until(EC.element_to_be_clickable(FleetPortalPage.list_view))
+
+            # Scroll into view and click
+            self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+            element.click()
+            time.sleep(2)
+
+            #Confirm it's displayed
+            status = element.is_displayed()
+            print(element.text + " matched")
+            log.info("Clicked on List view button")
 
         except NoSuchElementException:
-            log.info("************  LIST VIEW button not displayed **********")
+            log.error("************ LIST VIEW button not found **********")
+        except TimeoutException:
+            log.error("************ LIST VIEW button not clickable in time **********")
+        except Exception as e:
+            log.error(f"Unexpected error while clicking LIST VIEW button: {str(e)}")
+
         return status
 
     def validate_live_view_page_asset_header(self, log):
@@ -859,7 +911,16 @@ class FleetPortalPage:
     def validate_Drivers_page_search_btn(self,log):
         status = False
         try:
-            self.driver.find_element(*FleetPortalPage.driver_serach).click()
+            wait = WebDriverWait(self.driver, 20)
+            # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
+            self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
+            element = wait.until(EC.element_to_be_clickable(FleetPortalPage.driver_serach))
+            # Scroll into view
+            # self.driver.execute_script("arguments[0].scrollIntoView(true);", element)
+            element.click()
+            log.info("Clicked on Driver Search button")
+            return True
+            # self.driver.find_element(*FleetPortalPage.driver_serach).click()
             time.sleep(12)
             driver_serach1 = self.driver.find_element(*FleetPortalPage.driver_serach)
             status = driver_serach1.is_displayed()
@@ -934,6 +995,8 @@ class FleetPortalPage:
     def validate_challenges_page(self, log):
         status = False
         try:
+            # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
+            self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
             self.driver.find_element(*FleetPortalPage.challenges_page).click()
             time.sleep(5)
             print(self.driver.current_url)
@@ -1008,6 +1071,8 @@ class FleetPortalPage:
             view_report_btn1 = self.driver.find_element(*FleetPortalPage.view_report_btn)
             status = view_report_btn1.is_displayed()
             print(view_report_btn1.text + " matched")
+            # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
+            self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
             self.driver.find_element(*FleetPortalPage.view_report_btn).click()
             time.sleep(7)
 
@@ -1241,6 +1306,8 @@ class FleetPortalPage:
     def validate_assets_page(self, log):
         status = False
         try:
+            # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
+            self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
             self.driver.find_element(*FleetPortalPage.assets_page).click()
             time.sleep(5)
             print(self.driver.current_url)

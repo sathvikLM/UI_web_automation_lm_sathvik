@@ -1,17 +1,16 @@
 from pathlib import Path
-import platform
 from datetime import datetime
+import platform
 import pytest
-import pytest_html
-from selenium import webdriver
+import os
 import time
-from selenium.webdriver.chrome import service
+from slugify import slugify
+
+from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service as ChromeService
-from selenium.webdriver.common.by import By
-from slugify import slugify
-from webdriver_manager.chrome import ChromeDriverManager
 from selenium.webdriver.firefox.service import Service as FirefoxService
+from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
 #
@@ -49,15 +48,24 @@ def pytest_addoption(parser):
 def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
+    is_jenkins = "JENKINS_HOME" in os.environ
     if browser_name == "chrome":
         options = Options()
-        # options.add_argument('--headless')
-        options.add_argument("--headless=new") 
-        options.add_argument('--no-sandbox')
-        options.add_argument('--disable-dev-shm-usage')
-        options.add_argument("--disable-gpu")
-        options.add_argument("--window-size=1920,1080")
+        if is_jenkins:
+         # options.add_argument('--headless')
+            options.add_argument("--headless=new")
+            options.add_argument('--no-sandbox')
+            options.add_argument('--disable-dev-shm-usage')
+            options.add_argument("--disable-gpu")
+            options.add_argument("--window-size=1920,1080")
+        else:
+            options.add_argument("--start-maximized")
+
         driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
+
+        if not is_jenkins:
+            driver.set_window_size(1920, 1080)
+
         # driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
         # driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
     elif browser_name == "firefox":
@@ -67,11 +75,11 @@ def setup(request):
         print("IE driver")
     driver.get("https://admin.lightmetrics.co/")
 
-    # ✅ Replacing maximize_window() logic based on headless mode
-    if "--headless" in options.arguments:
-        driver.set_window_size(1920, 1080)
-    else:
-        driver.maximize_window()
+    # # ✅ Replacing maximize_window() logic based on headless mode
+    # if "--headless" in options.arguments:
+    #     driver.set_window_size(1920, 1080)
+    # else:
+    #     driver.maximize_window()
 
     print(driver.title)
     request.cls.driver = driver
@@ -133,10 +141,10 @@ def pytest_configure(config):
 
 # ############## Changing Summary ################ :-
 @pytest.mark.optionalhook
+# def pytest_html_results_summary(prefix, summary, postfix):
+#     ''' modifying the summary in pytest environment'''
+#     from py.xml import html
 def pytest_html_results_summary(prefix, summary, postfix):
-    ''' modifying the summary in pytest environment'''
-
-    from py.xml import html
-    prefix.extend([html.h3(" TSP : 'Lmpresales' ")])
-    summary.extend([html.h3(" ")])
-    postfix.extend([html.h3(" ")])
+    prefix.append("<h3>TSP : 'Lmpresales'</h3>")
+    summary.append("<h3>Summary Placeholder</h3>")
+    postfix.append("<h3>Postfix Placeholder</h3>")

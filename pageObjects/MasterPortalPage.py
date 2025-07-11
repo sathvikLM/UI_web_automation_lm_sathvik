@@ -1,12 +1,19 @@
 import time
 
 from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC, wait
+from selenium.webdriver.support.wait import WebDriverWait
+
+from utilities.BaseClass import BaseClass
 
 
-class MasterPortalPage:
+
+class MasterPortalPage(BaseClass):
 
     def __init__(self, driver):
         self.driver = driver
+        super().__init__()
+
 
     # feature_announce_btn = (By.XPATH, "//h3[text()='Feature Announcement']/parent::div")
     # closebtn = (By.XPATH, "//h3[text()='Feature Announcement']/parent::div/following-sibling::button")
@@ -20,6 +27,8 @@ class MasterPortalPage:
     #account_search = (By.XPATH, "//input[@data-placeholder='Search account']")
     #fleetdashboard = (By.XPATH, "//button[@mattooltip='Launch fleet dashboard']")
     fleetdashboard = (By.XPATH, "//button[@mattooltip='Launch fleet dashboard']")
+    toggle_menu = (By.XPATH, "//mat-icon[normalize-space()='menu']")
+    side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
 
     def close_popup(self):
         time.sleep(5)
@@ -39,8 +48,12 @@ class MasterPortalPage:
             time.sleep(1)
 
     def account_option(self):
-        time.sleep(5)
-        self.driver.find_element(*MasterPortalPage.account_btn).click()
+        # time.sleep(5)
+        # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
+        self.ensure_sidebar_expanded(MasterPortalPage.side_menu, MasterPortalPage.toggle_menu)
+        wait = WebDriverWait(self.driver, 20)
+        account_btn = wait.until(EC.element_to_be_clickable(MasterPortalPage.account_btn))
+        account_btn.click()
         print(self.driver.current_url)
         #time.sleep(3)
         #self.driver.find_element(*MasterPortalPage.account_search).click()

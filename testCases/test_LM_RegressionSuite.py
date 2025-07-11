@@ -337,3 +337,6 @@ class Test_LM_Regression_Suite(BaseClass):
         log.info(
             "********************** Overview table presents *********************** :: %s " % overview_table_status)
         adminPage.admin_Logout()
+        log.info("************** Logout successful ****************")
+        self.driver.quit()
+        log.info("************** Browser closed successfully ****************")

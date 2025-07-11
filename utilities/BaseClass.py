@@ -51,9 +51,8 @@ class BaseClass:
             log.debug(f"Initial sidebar class: {menu_class}")
 
             if "mat-drawer-opened" not in menu_class:
-                log.info("Sidebar is collapsed. Attempting to expand it.")
-                actions = ActionChains(self.driver)
-                actions.move_to_element(toggle_button).click().perform()
+                log.info("Sidebar is collapsed. Attempting to expand it using JS click.")
+                self.driver.execute_script("arguments[0].click();", toggle_button)
 
                 for i in range(10):
                     menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")

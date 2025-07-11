@@ -335,7 +335,8 @@ class FleetPortalPage(BaseClass):
         try:
             # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
             self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
-            self.driver.find_element(*FleetPortalPage.safety_events_btn).click()
+            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(FleetPortalPage.safety_events_btn)).click()
+            #self.driver.find_element(*FleetPortalPage.safety_events_btn).click()
             time.sleep(5)
             safety_events1 = self.driver.find_element(*FleetPortalPage.safety_events_btn)
             print(self.driver.current_url)

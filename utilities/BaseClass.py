@@ -33,45 +33,49 @@ class BaseClass:
 
 
     def ensure_sidebar_expanded(self, side_menu_locator, toggle_button_locator):
-        """
-            Ensures sidebar is expanded before interacting with menu elements.
+    """
+    Ensures sidebar is expanded before interacting with menu elements.
 
-            Fix added by Vidya Hampiholi (LightMetrics QA) to address a UI issue where the sidebar
-            was collapsed by default on Windows and Jenkins, preventing navigation item interaction.
-            """
-        log = self.getLogger()
-        wait = WebDriverWait(self.driver, 20)
+    Fix by Vidya Hampiholi (LightMetrics QA) to address a UI issue where the sidebar
+    is collapsed by default on Windows/Jenkins, causing menu items to be hidden.
+    """
+    log = self.getLogger()
+    wait = WebDriverWait(self.driver, 20)
 
-        try:
-            log.info("Waiting for sidebar container and toggle button.")
-            menu_element = wait.until(EC.presence_of_element_located(side_menu_locator))
-            toggle_button = wait.until(EC.element_to_be_clickable(toggle_button_locator))
+    try:
+        log.info("Waiting for sidebar container and toggle button.")
+        sidebar = wait.until(EC.presence_of_element_located(side_menu_locator))
+        toggle_button = wait.until(EC.element_to_be_clickable(toggle_button_locator))
 
-            menu_class = menu_element.get_attribute("class")
-            log.debug(f"Initial sidebar class: {menu_class}")
+        menu_class = sidebar.get_attribute("class")
+        log.debug(f"Initial sidebar class: {menu_class}")
 
-            if "mat-drawer-opened" not in menu_class:
-                log.info("Sidebar collapsed. Expanding it.")
-                toggle_button.click()
+        if "mat-drawer-opened" not in menu_class:
+            log.info("Sidebar is collapsed. Attempting to expand it.")
+            actions = ActionChains(self.driver)
+            actions.move_to_element(toggle_button).click().perform()
+
+            for i in range(10):
+                menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
+                if "mat-drawer-opened" in menu_class:
+                    log.info("Sidebar expanded successfully.")
+                    return
                 time.sleep(1)
 
-                for i in range(10):
-                    menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
-                    if "mat-drawer-opened" in menu_class:
-                        log.info("Sidebar expanded successfully.")
-                        return
-                    time.sleep(1)
+            log.error("Sidebar did not expand after clicking toggle.")
+            raise TimeoutException("Sidebar did not expand after clicking toggle.")
+        else:
+            log.info("Sidebar is already expanded.")
 
-                log.error("Sidebar did not expand after clicking toggle.")
-                raise TimeoutException("Sidebar did not expand after clicking toggle.")
-            else:
-                log.info("Sidebar is already expanded.")
-        except TimeoutException as e:
-            log.error("Timeout while expanding sidebar: " + str(e))
-        except NoSuchElementException as e:
-            log.error(f"Sidebar or toggle not found: {e}")
-        except ElementNotInteractableException as e:
-            log.error(f"Toggle button not interactable: {e}")
+    except TimeoutException as e:
+        log.error("Timeout while expanding sidebar: " + str(e))
+        raise
+    except NoSuchElementException as e:
+        log.error(f"Sidebar or toggle not found: {e}")
+        raise
+    except ElementNotInteractableException as e:
+        log.error(f"Toggle button not interactable: {e}")
+        raise
 
     def verifyLinkPresence(self, text):
         element = WebDriverWait(self.driver, 10).until(

@@ -27,7 +27,7 @@ class MasterPortalPage(BaseClass):
     #account_search = (By.XPATH, "//input[@data-placeholder='Search account']")
     #fleetdashboard = (By.XPATH, "//button[@mattooltip='Launch fleet dashboard']")
     fleetdashboard = (By.XPATH, "//button[@mattooltip='Launch fleet dashboard']")
-    toggle_menu = (By.XPATH, "//mat-icon[normalize-space()='menu']")
+    toggle_menu = (By.XPATH, "//mat-icon[normalize-space(.)='menu' and contains(@class, 'material-icons')]")
     side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
 
     def close_popup(self):

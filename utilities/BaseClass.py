@@ -55,15 +55,14 @@ class BaseClass:
             self.driver.execute_script("arguments[0].scrollIntoView(true);", toggle_button)
             time.sleep(1)
 
-            # Ensure it's clickable
-            wait.until(EC.element_to_be_clickable(toggle_button_locator))
-
-            # JS click attempt
-            log.info("Attempting to expand sidebar using JavaScript click.")
-            self.driver.execute_script("arguments[0].click();", toggle_button)
+            try:
+                wait.until(EC.element_to_be_clickable(toggle_button_locator))
+                toggle_button.click()
+            except Exception as e:
+                log.warning(f"Standard click failed: {e}")
 
             # Wait for sidebar to open (check class change)
-            for i in range(10):
+            for i in range(5):
                 time.sleep(1)
                 menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
                 log.debug(f"Sidebar class after toggle attempt {i + 1}: {menu_class}")
@@ -72,13 +71,17 @@ class BaseClass:
                     return
 
             # Final fallback: click again
-            log.warning("Sidebar not expanded after first click. Retrying JS click...")
+            log.warning("Standard click did not expand sidebar. Trying JavaScript click.")
             self.driver.execute_script("arguments[0].click();", toggle_button)
             time.sleep(2)
-            menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
-            if "mat-drawer-opened" in menu_class:
-                log.info("Sidebar expanded successfully on second attempt.")
-                return
+
+            for i in range(5):
+                menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
+                log.debug(f"Sidebar class after JS click attempt {i + 1}: {menu_class}")
+                if "mat-drawer-opened" in menu_class:
+                    log.info("Sidebar expanded successfully using JavaScript click.")
+                    return
+                time.sleep(1)
 
             # If still failed
             screenshot_path = "/var/lib/jenkins/workspace/sidebar_failed.png"

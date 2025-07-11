@@ -35,7 +35,7 @@ class FleetPortalPage(BaseClass):
     event_trend = (By.XPATH, "(//div[@class='container']/div//div/h3)[5]")
     # SAFETY EVENTS
     toggle_menu = (By.XPATH, "//button[.//mat-icon[normalize-space(.)='menu']]")
-    side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
+    side_menu = (By.XPATH, "//div[@class='mat-drawer-inner-container ng-tns-c263-3']")
     safety_events_btn = (By.XPATH, "//span[text()='Safety Events']/ancestor::span/parent::a")
     next_btn = (By.XPATH, "//span[text()='Next']")
     done_btn = (By.XPATH, "//span[text()='Done']")

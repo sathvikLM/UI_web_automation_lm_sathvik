@@ -34,7 +34,7 @@ class FleetPortalPage(BaseClass):
     event_summary = (By.XPATH, "(//div[@class='container']/div//div/h3)[4]")
     event_trend = (By.XPATH, "(//div[@class='container']/div//div/h3)[5]")
     # SAFETY EVENTS
-    toggle_menu = (By.XPATH, "//mat-icon[normalize-space()='menu']")
+    toggle_menu = (By.XPATH, "//mat-icon[normalize-space(.)='menu' and contains(@class, 'material-icons')]")
     side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
     safety_events_btn = (By.XPATH, "//span[text()='Safety Events']/ancestor::span/parent::a")
     next_btn = (By.XPATH, "//span[text()='Next']")

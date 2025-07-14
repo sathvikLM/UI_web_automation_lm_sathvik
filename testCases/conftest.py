@@ -59,6 +59,10 @@ def setup(request):
             options.add_argument("--disable-gpu")
             options.add_argument("--window-size=1920,1080")
             options.add_argument("--disable-blink-features=AutomationControlled")
+            
+            options.add_argument("--force-device-scale-factor=1")
+            options.add_argument("--high-dpi-support=1")
+            options.add_argument("--disable-features=VizDisplayCompositor")
         else:
             options.add_argument("--start-maximized")
 

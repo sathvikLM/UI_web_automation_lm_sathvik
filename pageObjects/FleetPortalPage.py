@@ -34,10 +34,8 @@ class FleetPortalPage(BaseClass):
     event_summary = (By.XPATH, "(//div[@class='container']/div//div/h3)[4]")
     event_trend = (By.XPATH, "(//div[@class='container']/div//div/h3)[5]")
     # SAFETY EVENTS
-    toggle_menu = (By.XPATH, "//button[.//mat-icon[normalize-space(.)='menu']]")
-    #toggle_menu = (By.XPATH, "//mat-toolbar//button[.//mat-icon[normalize-space() = 'menu'] and not(contains(@class,'mat-mdc-icon-button-hidden'))]")
-    #side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
-    side_menu = (By.XPATH, "//div[contains(@class,'mat-drawer-inner-container')]/ancestor::*[contains(@class,'mat-drawer-side')]")
+    toggle_menu = (By.XPATH, "//mat-icon[normalize-space()='menu']")
+    side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
     safety_events_btn = (By.XPATH, "//span[text()='Safety Events']/ancestor::span/parent::a")
     next_btn = (By.XPATH, "//span[text()='Next']")
     done_btn = (By.XPATH, "//span[text()='Done']")
@@ -336,8 +334,7 @@ class FleetPortalPage(BaseClass):
         try:
             # Ensure sidebar is expanded (Fix by Vidya Hampiholi - handles collapsed menu on Windows/Jenkins)
             self.ensure_sidebar_expanded(FleetPortalPage.side_menu, FleetPortalPage.toggle_menu)
-            WebDriverWait(self.driver, 10).until(EC.element_to_be_clickable(FleetPortalPage.safety_events_btn)).click()
-            #self.driver.find_element(*FleetPortalPage.safety_events_btn).click()
+            self.driver.find_element(*FleetPortalPage.safety_events_btn).click()
             time.sleep(5)
             safety_events1 = self.driver.find_element(*FleetPortalPage.safety_events_btn)
             print(self.driver.current_url)

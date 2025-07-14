@@ -37,7 +37,7 @@ class FleetPortalPage(BaseClass):
     toggle_menu = (By.XPATH, "//button[.//mat-icon[normalize-space(.)='menu']]")
     #toggle_menu = (By.XPATH, "//mat-toolbar//button[.//mat-icon[normalize-space() = 'menu'] and not(contains(@class,'mat-mdc-icon-button-hidden'))]")
     #side_menu = (By.XPATH, "//div[contains(@class, 'mat-drawer-inner-container')]")
-    side_menu = (By.XPATH, "//mat-nav-list[contains(@class, 'side-menu')]")
+    side_menu = (By.XPATH, "//div[contains(@class,'mat-drawer-inner-container')]/ancestor::*[contains(@class,'mat-drawer-side')]")
     safety_events_btn = (By.XPATH, "//span[text()='Safety Events']/ancestor::span/parent::a")
     next_btn = (By.XPATH, "//span[text()='Next']")
     done_btn = (By.XPATH, "//span[text()='Done']")

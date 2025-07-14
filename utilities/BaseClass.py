@@ -45,7 +45,9 @@ class BaseClass:
         try:
             log.info("Waiting for sidebar container and toggle button.")
             menu_element = wait.until(EC.presence_of_element_located(side_menu_locator))
-            toggle_button = wait.until(EC.element_to_be_clickable(toggle_button_locator))
+            #toggle_button = wait.until(EC.element_to_be_clickable(toggle_button_locator))
+            toggle_candidates = wait.until(lambda d: [e for e in d.find_elements(*toggle_button_locator) if e.is_displayed()])
+            toggle_button = toggle_candidates[0]
 
             menu_class = menu_element.get_attribute("class")
             log.debug(f"Initial sidebar class: {menu_class}")

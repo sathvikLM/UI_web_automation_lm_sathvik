@@ -2,121 +2,148 @@ import inspect
 import logging
 import os
 import time
-from pathlib import Path                               # NEW
-from selenium.webdriver.common.action_chains import ActionChains  # NEW
-
+from pathlib import Path
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.select import Select
-from selenium.common.exceptions import (
-    TimeoutException,
-    NoSuchElementException,
-    ElementNotInteractableException,
-)
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, ElementNotInteractableException
 
 
 # @pytest.mark.usefixtures("setup")
 class BaseClass:
-    # ------------------------------------------------------------------ logger
+
     def getLogger(self):
-        logger_name = inspect.stack()[1][3]
-        logger = logging.getLogger(logger_name)
+        loggerName = inspect.stack()[1][3]
+        logger = logging.getLogger(loggerName)
 
-        if not logger.handlers:  # create file‑handler only once
-            logs_dir = "./Logs"
-            os.makedirs(logs_dir, exist_ok=True)
+        # Ensure Logs directory exists before creating the logfile
+        if not logger.handlers:
+            logs_dir = './Logs'
+            if not os.path.exists(logs_dir):
+                os.makedirs(logs_dir)
 
-            file_handler = logging.FileHandler(f"{logs_dir}/logfile.log")
-            formatter = logging.Formatter(
-                "%(asctime)s :%(levelname)s : %(name)s :%(message)s"
-            )
-            file_handler.setFormatter(formatter)
+            fileHandler = logging.FileHandler(f'{logs_dir}/logfile.log')
+            formatter = logging.Formatter("%(asctime)s :%(levelname)s : %(name)s :%(message)s")
+            fileHandler.setFormatter(formatter)
 
-            logger.addHandler(file_handler)
+            logger.addHandler(fileHandler)
             logger.setLevel(logging.DEBUG)
 
         return logger
 
-    # ---------------------------------------------------------------- sidebar
-    def ensure_sidebar_expanded(
-        self,
-        side_menu_locator: tuple,
-        toggle_button_locator: tuple,
-        timeout: int = 20,
-    ) -> None:
-        """
-        Expand a collapsed Angular‑Material sidenav both locally and on Jenkins.
 
-        • tries ActionChains → native click → JS click, with scroll‑into‑view  
-        • waits after every attempt for the `mat‑drawer‑opened` class  
-        • makes a screenshot and raises after all attempts fail
+    # def ensure_sidebar_expanded(self, side_menu_locator, toggle_button_locator):
+    #     """
+    #         Ensures sidebar is expanded before interacting with menu elements.
+    #
+    #         Fix added by Vidya Hampiholi (LightMetrics QA) to address a UI issue where the sidebar
+    #         was collapsed by default on Windows and Jenkins, preventing navigation item interaction.
+    #         """
+    #     log = self.getLogger()
+    #     wait = WebDriverWait(self.driver, 20)
+    #
+    #     try:
+    #         log.info("Waiting for sidebar container and toggle button.")
+    #         menu_element = wait.until(EC.presence_of_element_located(side_menu_locator))
+    #         toggle_button = wait.until(EC.element_to_be_clickable(toggle_button_locator))
+    #
+    #         menu_class = menu_element.get_attribute("class")
+    #         log.debug(f"Initial sidebar class: {menu_class}")
+    #
+    #         if "mat-drawer-opened" not in menu_class:
+    #             log.info("Sidebar collapsed. Expanding it.")
+    #             toggle_button.click()
+    #             time.sleep(1)
+    #
+    #             for i in range(10):
+    #                 menu_class = self.driver.find_element(*side_menu_locator).get_attribute("class")
+    #                 if "mat-drawer-opened" in menu_class:
+    #                     log.info("Sidebar expanded successfully.")
+    #                     return
+    #                 time.sleep(1)
+    #
+    #             log.error("Sidebar did not expand after clicking toggle.")
+    #             raise TimeoutException("Sidebar did not expand after clicking toggle.")
+    #         else:
+    #             log.info("Sidebar is already expanded.")
+    #     except TimeoutException as e:
+    #         log.error("Timeout while expanding sidebar: " + str(e))
+    #     except NoSuchElementException as e:
+    #         log.error(f"Sidebar or toggle not found: {e}")
+    #     except ElementNotInteractableException as e:
+    #         log.error(f"Toggle button not interactable: {e}")
+
+    def ensure_sidebar_expanded(self, side_menu_locator, toggle_button_locator):
+        """
+        Ensures sidebar is expanded before interacting with menu elements.
+        Fix by Vidya Hampiholi (LightMetrics QA)
         """
         log = self.getLogger()
-        wait = WebDriverWait(self.driver, timeout)
+        wait = WebDriverWait(self.driver, 20)
 
-        # ---------- helper ---------------------------------------------------
-        def _is_open() -> bool:
-            cls = self.driver.find_element(*side_menu_locator).get_attribute("class")
-            return "mat-drawer-opened" in cls
+        try:
+            log.info("Waiting for sidebar container and toggle button.")
+            sidebar = wait.until(EC.presence_of_element_located(side_menu_locator))
+            toggle = wait.until(EC.element_to_be_clickable(toggle_button_locator))
 
-        # ---------- locate elements -----------------------------------------
-        log.info("Waiting for sidenav container & toggle button …")
-        sidebar = wait.until(EC.presence_of_element_located(side_menu_locator))
-        toggle = wait.until(EC.element_to_be_clickable(toggle_button_locator))
+            sidebar_class = sidebar.get_attribute("class")
+            log.debug(f"Initial sidebar class: {sidebar_class}")
 
-        if _is_open():
-            log.info("Sidenav already open – nothing to do.")
-            return
-
-        # ---------- attempt list --------------------------------------------
-        attempts = (
-            (
-                "ActionChains click",
-                lambda: ActionChains(self.driver)
-                .move_to_element(toggle)
-                .pause(0.1)
-                .click()
-                .perform(),
-            ),
-            ("native WebElement.click()", toggle.click),
-            (
-                "JavaScript click",
-                lambda: self.driver.execute_script("arguments[0].click()", toggle),
-            ),
-        )
-
-        for name, click_fn in attempts:
-            try:
-                # always scroll into view first (important in headless)
-                self.driver.execute_script(
-                    "arguments[0].scrollIntoView({block:'center'});", toggle
-                )
-                time.sleep(0.3)
-
-                click_fn()  # perform the click
-                wait.until(lambda _: _is_open(), timeout=3)
-                log.info(f"Sidenav opened with {name}.")
+            if "mat-drawer-opened" in sidebar_class:
+                log.info("Sidebar is already expanded.")
                 return
-            except Exception as exc:
-                log.warning(f"{name} failed: {exc!r}")
-                time.sleep(1)  # short pause before next method
 
-        # ---------- give up --------------------------------------------------
-        screenshot = Path("Screenshots") / f"sidenav_fail_{int(time.time())}.png"
-        screenshot.parent.mkdir(exist_ok=True)
-        self.driver.save_screenshot(str(screenshot))
-        log.error(
-            f"Sidenav still closed after all strategies. "
-            f"Screenshot saved → {screenshot}"
-        )
-        raise TimeoutException("Unable to open sidenav – see screenshot & logs.")
+            # Try multiple click strategies (especially for headless)
+            strategies = [
+                ("ActionChains",
+                 lambda: ActionChains(self.driver).move_to_element(toggle).pause(0.2).click().perform()),
+                ("Native click", toggle.click),
+                ("JS click", lambda: self.driver.execute_script("arguments[0].click()", toggle)),
+            ]
 
-    # ---------------------------------------------------------------- misc
+            # Scroll into view first (critical in headless)
+            self.driver.execute_script("arguments[0].scrollIntoView({block: 'center'});", toggle)
+            time.sleep(0.5)
+
+            for name, action in strategies:
+                try:
+                    log.info(f"Trying: {name}")
+                    action()
+                    for _ in range(5):
+                        current_class = sidebar.get_attribute("class")
+                        if "mat-drawer-opened" in current_class:
+                            log.info(f"Sidebar expanded using {name}.")
+                            return
+                        time.sleep(1)
+                    log.warning(f"{name} didn't expand the sidebar.")
+                except Exception as e:
+                    log.warning(f"{name} failed: {e}")
+
+            # Final failure - save screenshot
+            screenshot = Path("Screenshots") / f"sidebar_fail_{int(time.time())}.png"
+            screenshot.parent.mkdir(exist_ok=True)
+            self.driver.save_screenshot(str(screenshot))
+            log.error(f"Sidebar did not expand. Screenshot saved to {screenshot}")
+            raise TimeoutException("Sidebar failed to expand in headless mode.")
+
+        except TimeoutException as e:
+            log.error("Timeout while expanding sidebar: " + str(e))
+            raise
+
+        except NoSuchElementException as e:
+            log.error(f"Sidebar or toggle not found: {e}")
+            raise
+
+        except ElementNotInteractableException as e:
+            log.error(f"Toggle button not interactable: {e}")
+            raise
+
     def verifyLinkPresence(self, text):
-        WebDriverWait(self.driver, 10).until(
-            EC.presence_of_element_located((By.LINK_TEXT, text))
-        )
+        element = WebDriverWait(self.driver, 10).until(
+            EC.presence_of_element_located((By.LINK_TEXT, text)))
 
     def selectOptionByText(self, locator, text):
-        Select(locator).select_by_visible_text(text)
+        sel = Select(locator)
+        sel.select_by_visible_text(text)

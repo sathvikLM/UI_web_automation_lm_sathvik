@@ -43,6 +43,13 @@ def pytest_addoption(parser):
     parser.addoption(
         "--browser_name", action="store", default="chrome"
     )
+    parser.addoption(
+        "--env", action="store", default="QA", help="Environment: QA or PROD"
+    )
+
+@pytest.fixture(scope="session")
+def env(request):
+    return request.config.getoption("--env")
 
 @pytest.fixture(scope="function", autouse=True)
 def setup(request):

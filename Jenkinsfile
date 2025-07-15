@@ -77,7 +77,7 @@ pipeline {
                         The latest automation run for <b>${env.JOB_NAME}</b> has completed.<br>
                         <b>Status:</b> ${currentBuild.currentResult}<br>
                         <b>Allure Report:</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br><br>
-                        Regards,<br>Jenkins
+                        Regards,<br>QA Automation Team
                     """,
                     mimeType: 'text/html',
                     to: "vidya.hampiholi@lightmetrics.co, divya.gajanana@lightmetrics.co"

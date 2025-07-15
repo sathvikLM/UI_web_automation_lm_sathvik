@@ -55,6 +55,15 @@ def env(request):
 def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
+    selected_env = request.config.getoption("--env")
+    
+    if selected_env.upper() == "QA":
+        base_url = "https://admin.lightmetrics.co/"
+    elif selected_env.upper() == "PROD":
+        base_url = "https://app.lightmetrics.co/"
+    else:
+        raise ValueError(f"Unsupported environment: {selected_env}")
+        
     is_jenkins = "JENKINS_HOME" in os.environ
     if browser_name == "chrome":
         options = Options()
@@ -80,7 +89,7 @@ def setup(request):
         driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
     elif browser_name == "IE":
         print("IE driver")
-    driver.get("https://admin.lightmetrics.co/")
+    driver.get(base_url)
 
     # # ✅ Replacing maximize_window() logic based on headless mode
     # if "--headless" in options.arguments:

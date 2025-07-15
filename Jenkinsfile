@@ -5,15 +5,30 @@ pipeline {
         allure 'Default-Allure'
     }
 
+    parameters {
+        choice(
+            name: 'ENVIRONMENT',
+            choices: ['QA', 'PROD'],
+            description: 'Select environment to run tests'
+        )
+    }
+
     environment {
         PYTHON_VERSION  = '3.9.18'
         ALLURE_RESULTS  = 'allure-results'
         ALLURE_REPORT   = 'allure-report'
         PYENV_ROOT      = "$HOME/.pyenv"
         PATH            = "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
+        TEST_ENV        = "${params.ENVIRONMENT}"     // propagate the choice to shells
     }
 
     stages {
+
+        stage('Print Build Parameters') {
+            steps {
+                echo "▶ Selected environment: ${params.ENVIRONMENT}"
+            }
+        }
 
         stage('Setup Python & Dependencies') {
             steps {
@@ -22,8 +37,10 @@ pipeline {
                     echo "--- Setting up pyenv and Python ---"
                     export PYENV_ROOT="$HOME/.pyenv"
                     export PATH="$PYENV_ROOT/bin:$PATH"
+                    eval "$(pyenv init --path)"
                     eval "$(pyenv init -)"
-                    pyenv shell "${PYTHON_VERSION}"
+                    pyenv install -s "$PYTHON_VERSION"
+                    pyenv shell "$PYTHON_VERSION"
 
                     echo "--- Python version ---"
                     python --version
@@ -42,8 +59,10 @@ pipeline {
         stage('Run Pytest with Allure') {
             steps {
                 sh '''
+                    set -e
                     . venv/bin/activate
-                    pytest --alluredir=${ALLURE_RESULTS}
+                    echo "--- Running tests in $TEST_ENV environment ---"
+                    pytest --env="$TEST_ENV" --alluredir="$ALLURE_RESULTS"
                 '''
             }
         }
@@ -51,10 +70,11 @@ pipeline {
         stage('Generate Allure Report (CLI)') {
             steps {
                 sh '''
+                    set -e
                     echo "--- Generating Allure Report ---"
                     export PATH="$ALLURE_HOME/bin:$PATH"
                     allure --version
-                    allure generate ${ALLURE_RESULTS} --clean -o ${ALLURE_REPORT}
+                    allure generate "$ALLURE_RESULTS" --clean -o "$ALLURE_REPORT"
                 '''
             }
         }
@@ -71,11 +91,12 @@ pipeline {
         stage('Email Report') {
             steps {
                 emailext(
-                    subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                    subject: "[${params.ENVIRONMENT}] Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER} – ${currentBuild.currentResult}",
                     body: """
                         Hi Team,<br><br>
                         The latest automation run for <b>${env.JOB_NAME}</b> has completed.<br>
                         <b>Status:</b> ${currentBuild.currentResult}<br>
+                        <b>Environment:</b> ${params.ENVIRONMENT}<br>
                         <b>Allure Report:</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br><br>
                         Regards,<br>QA Automation Team
                     """,
@@ -89,11 +110,12 @@ pipeline {
     post {
         failure {
             emailext(
-                subject: "❌ FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: "❌ [${params.ENVIRONMENT}] FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
                     Hi Team,<br><br>
                     The automation run for <b>${env.JOB_NAME}</b> has failed.<br>
                     <b>Status:</b> ${currentBuild.currentResult}<br>
+                    <b>Environment:</b> ${params.ENVIRONMENT}<br>
                     <b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br><br>
                     Regards,<br>QA Automation Team
                 """,
@@ -104,7 +126,7 @@ pipeline {
 
         always {
             echo 'Cleaning up workspace and virtual environment...'
-            sh 'rm -rf venv'
+            sh 'rm -rf venv || true'
             archiveArtifacts artifacts: '**/*.png', fingerprint: true
             deleteDir()
         }

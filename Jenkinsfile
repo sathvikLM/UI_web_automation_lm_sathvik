@@ -80,7 +80,7 @@ pipeline {
                         Regards,<br>Jenkins
                     """,
                     mimeType: 'text/html',
-                    to: "vidya.hampiholi@lightmetrics.co"
+                    to: "vidya.hampiholi@lightmetrics.co, divya.gajanana@lightmetrics.co"
                 )
             }
         }

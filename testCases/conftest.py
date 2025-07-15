@@ -44,7 +44,7 @@ def pytest_addoption(parser):
         "--browser_name", action="store", default="chrome"
     )
     parser.addoption(
-        "--env", action="store", default="QA", help="Environment: QA or PROD"
+        "--env", action="store", default="QA", help="Environment: QA, BETA or PROD"
     )
 
 @pytest.fixture(scope="session")
@@ -58,9 +58,11 @@ def setup(request):
     selected_env = request.config.getoption("--env")
     
     if selected_env.upper() == "QA":
-        base_url = "https://admin.lightmetrics.co/"
+        base_url = "https://admin-qa.lightmetrics.co/"
     elif selected_env.upper() == "PROD":
-        base_url = "https://app.lightmetrics.co/"
+        base_url = "https://admin.lightmetrics.co/"
+    elif selected_env.upper() == "BETA":
+        base_url = "https://admin-beta.lightmetrics.co/"
     else:
         raise ValueError(f"Unsupported environment: {selected_env}")
         

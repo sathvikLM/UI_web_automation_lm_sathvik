@@ -87,6 +87,21 @@ pipeline {
     }
 
     post {
+        failure {
+            emailext(
+                subject: "❌ FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                body: """
+                    Hi Team,<br><br>
+                    The automation run for <b>${env.JOB_NAME}</b> has failed.<br>
+                    <b>Status:</b> ${currentBuild.currentResult}<br>
+                    <b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br><br>
+                    Regards,<br>QA Automation Team
+                """,
+                mimeType: 'text/html',
+                to: "vidya.hampiholi@lightmetrics.co, divya.gajanana@lightmetrics.co"
+            )
+        }
+
         always {
             echo 'Cleaning up workspace and virtual environment...'
             sh 'rm -rf venv'

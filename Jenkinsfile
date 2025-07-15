@@ -1,22 +1,38 @@
 pipeline {
     agent any
 
+    tools {
+        allure 'Default-Allure'
+    }
+
     environment {
-        PYTHON = "python3.9"
-        VENV_DIR = ".venv"
+        PYTHON_VERSION = '3.9.18'
         ALLURE_RESULTS = "allure-results"
-        PATH = "/var/lib/jenkins/.pyenv/shims:/var/lib/jenkins/.pyenv/bin:${env.PATH}"
-        PYENV_VERSION = "3.9.18"
+        ALLURE_REPORT = "allure-report"
+        PYENV_ROOT = "$HOME/.pyenv"
+        PATH = "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
     }
 
     stages {
-        stage('Setup Python Virtual Env') {
+        stage('Setup Python & Dependencies') {
             steps {
                 sh '''
                     set -e
-                    $PYTHON -m venv $VENV_DIR
-                    . $VENV_DIR/bin/activate
-                    python -m ensurepip --upgrade
+
+                    echo "--- Loading pyenv ---"
+                    export PYENV_ROOT="$HOME/.pyenv"
+                    export PATH="$PYENV_ROOT/bin:$PATH"
+                    eval "$(pyenv init -)"
+                    pyenv shell "${PYTHON_VERSION}"
+
+                    echo "--- Python version ---"
+                    python --version
+
+                    echo "--- Setting up venv ---"
+                    python -m venv venv
+                    . venv/bin/activate
+
+                    echo "--- Installing requirements ---"
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -26,22 +42,26 @@ pipeline {
         stage('Run Pytest with Allure') {
             steps {
                 sh '''
-                    . $VENV_DIR/bin/activate
-                    pytest --alluredir=allure-results
+                    . venv/bin/activate
+                    pytest --alluredir=${ALLURE_RESULTS}
                 '''
             }
         }
 
         stage('Generate Allure Report') {
             steps {
-                sh 'allure generate allure-results --clean -o allure-report'
+                sh '''
+                    export PATH="$ALLURE_HOME/bin:$PATH"
+                    allure --version
+                    allure generate ${ALLURE_RESULTS} --clean -o ${ALLURE_REPORT}
+                '''
             }
         }
 
         stage('Publish Allure HTML Report') {
             steps {
                 publishHTML([
-                    reportDir: 'allure-report',
+                    reportDir: "${ALLURE_REPORT}",
                     reportFiles: 'index.html',
                     reportName: 'Allure Report',
                     allowMissing: false,
@@ -55,7 +75,7 @@ pipeline {
             steps {
                 emailext(
                     subject: "Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
-                    body: "Allure report for build: ${env.BUILD_URL}allure-report",
+                    body: "Allure report available at: ${env.BUILD_URL}allure-report",
                     to: "vidya.hampiholi@lightmetrics.co"
                 )
             }
@@ -64,9 +84,10 @@ pipeline {
 
     post {
         always {
-            echo "Cleaning up virtual environment"
-            sh "rm -rf $VENV_DIR"
+            echo "Cleaning up workspace and virtual environment..."
+            sh 'rm -rf venv'
             archiveArtifacts artifacts: '**/*.png', fingerprint: true
+            deleteDir()
         }
     }
 }

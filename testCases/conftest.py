@@ -1,9 +1,11 @@
 from pathlib import Path
 from datetime import datetime
-import platform
-import pytest
 import os
 import time
+import platform
+import pytest
+import logging
+import allure
 from slugify import slugify
 
 from selenium import webdriver
@@ -13,138 +15,120 @@ from selenium.webdriver.firefox.service import Service as FirefoxService
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.firefox import GeckoDriverManager
 
-#
-# @pytest.fixture(scope="class", autouse=True)
-# def setup(request):
-#     global driver
-#     browser_name = request.config.getoption("browser_name")
-#     if browser_name == "chrome":
-#         options = Options()
-#         # options.add_argument('--headless')
-#         options.add_argument('--no-sandbox')
-#         options.add_argument('--disable-dev-shm-usage')
-#         driver = webdriver.Chrome(service=Service("/home/a/Documents/drivers/chromedriver"))
-#     elif browser_name == "firefox":
-#         driver = webdriver.Firefox(executable_path="C:\\geckodriver.exe")
-#     elif browser_name == "IE":
-#         print("IE driver")
-#     driver.get("https://admin.lightmetrics.co/statistics")
-#     driver.maximize_window()
-#     print(driver.title)
-#     request.cls.driver = driver
-#     @pytest.mark.usefixtures("setup")
-#     class TestYourWebsite:
-#         def test_example(self):
-#             pass
+# ---------------------------------------------------------------------#
+#  1.  Global driver fixture (unchanged except for headless switch)    #
+# ---------------------------------------------------------------------#
 
 driver = None
 
 def pytest_addoption(parser):
-    parser.addoption(
-        "--browser_name", action="store", default="chrome"
-    )
+    parser.addoption("--browser_name", action="store", default="chrome")
 
 @pytest.fixture(scope="function", autouse=True)
 def setup(request):
     global driver
     browser_name = request.config.getoption("browser_name")
-    is_jenkins = "JENKINS_HOME" in os.environ
+    is_jenkins   = "JENKINS_HOME" in os.environ
+
     if browser_name == "chrome":
         options = Options()
         if is_jenkins:
-         # options.add_argument('--headless')
             options.add_argument("--headless=new")
-            options.add_argument('--no-sandbox')
-            options.add_argument('--disable-dev-shm-usage')
+            options.add_argument("--no-sandbox")
+            options.add_argument("--disable-dev-shm-usage")
             options.add_argument("--disable-gpu")
             options.add_argument("--window-size=1920,1080")
         else:
             options.add_argument("--start-maximized")
 
-        driver = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
-
+        driver = webdriver.Chrome(
+            service=ChromeService(ChromeDriverManager().install()),
+            options=options
+        )
         if not is_jenkins:
             driver.set_window_size(1920, 1080)
 
-        # driver = webdriver.Chrome(service=Service("/home/user/Downloads/chromedriver-linux64/chromedriver"))
-        # driver = webdriver.Chrome(executable_path="C:\\chromedriver.exe")
     elif browser_name == "firefox":
-        # driver = webdriver.Firefox(executable_path="C:\\geckodriver.exe")
-        driver = webdriver.Firefox(service=FirefoxService(GeckoDriverManager().install()))
-    elif browser_name == "IE":
-        print("IE driver")
+        driver = webdriver.Firefox(
+            service=FirefoxService(GeckoDriverManager().install())
+        )
+    else:
+        raise RuntimeError("Unsupported browser")
+
     driver.get("https://admin.lightmetrics.co/")
-
-    # # ✅ Replacing maximize_window() logic based on headless mode
-    # if "--headless" in options.arguments:
-    #     driver.set_window_size(1920, 1080)
-    # else:
-    #     driver.maximize_window()
-
-    print(driver.title)
     request.cls.driver = driver
+    yield
+    driver.quit()
 
-    def _capture_screenshot(name):
-        driver.get_screenshot_as_file(name)
+# ---------------------------------------------------------------------#
+#  2.  Screenshot helper (still used for HTML report)                  #
+# ---------------------------------------------------------------------#
+def _capture_screenshot(name: str):
+    driver.get_screenshot_as_file(name)
 
-    @pytest.fixture()
-    def set_up_tear_down_no_login(request) -> None:
-        request.set_viewport_size({"width": 1536, "height": 834})
-        request.goto("https://admin.lightmetrics.co/")
-        yield request
+# ---------------------------------------------------------------------#
+#  3.  Attach screenshot *and log file* to BOTH HTML & Allure          #
+# ---------------------------------------------------------------------#
+@pytest.hookimpl(hookwrapper=True)
+def pytest_runtest_makereport(item, call):
+    pytest_html = item.config.pluginmanager.getplugin("html")
+    outcome     = yield
+    report      = outcome.get_result()
+    extra       = getattr(report, "extra", [])
+    log_file    = max(Path("Logs").glob("run_*.log"), key=lambda p: p.stat().st_mtime)
 
-    @pytest.hookimpl(hookwrapper=True)
-    def pytest_runtest_makereport(item, call):
-        pytest_html = item.config.pluginmanager.getplugin("html")
-        outcome = yield
-        screen_file = ''
-        report = outcome.get_result()
-        extra = getattr(report, "extra", [])
-        if report.when == "call":
-            xfail = hasattr(report, "wasxfail")
-            if report.failed or xfail and "page" in item.funcargs:
-                request = item.funcargs['request']
-                screenshot_dir = Path("Screenshots")
-                screenshot_dir.mkdir(exist_ok=True)
-                screen_file = str(screenshot_dir / f"{slugify(item.nodeid)}.png")
-                _capture_screenshot(screen_file)
+    # ── attach screenshot on failure ───────────────────────────────────────
+    if report.when == "call":
+        xfail = hasattr(report, "wasxfail")
+        failed = (report.failed and not xfail) or (report.skipped and xfail)
 
-            if (report.skipped and xfail) or (report.failed and not xfail):
-                # add the screenshots to the html report
-                extra.append(pytest_html.extras.png(screen_file))
-            report.extra = extra
+        if failed:
+            scr_dir = Path("Screenshots"); scr_dir.mkdir(exist_ok=True)
+            scr_path = scr_dir / f"{slugify(item.nodeid)}.png"
+            _capture_screenshot(scr_path)
+            # HTML report
+            extra.append(pytest_html.extras.png(scr_path))
+            # Allure report
+            allure.attach.file(
+                scr_path,
+                name="screenshot",
+                attachment_type=allure.attachment_type.PNG,
+                extension=".png"
+            )
 
-# **************** HTML Report ****************** :-
+    report.extra = extra
 
-# ########## Changing Title name ############ :-
+    # ── always attach CURRENT log file to Allure for this test ─────────────
+    if report.when == "call":
+        try:
+            with open(log_file, "r", encoding="utf‑8") as f:
+                allure.attach(
+                    f.read(),
+                    name="run log",
+                    attachment_type=allure.attachment_type.TEXT
+                )
+        except Exception as e:
+            print(f"[WARN] Could not attach log to Allure: {e}")
+
+# ---------------------------------------------------------------------#
+#  4.  HTML report customisation (unchanged)                           #
+# ---------------------------------------------------------------------#
 def pytest_html_report_title(report):
-    ''' modifying the title of html report'''
     report.title = "LightMetrics Technologies Pvt. Ltd"
 
-# ############ Changing Environment ############# :-
 def pytest_configure(config):
-    username = "Sreenivasulu Akki"
-    # manager = "Divya"
-
-    # getting python version
     from platform import python_version
-    py_version = python_version()
-    # overwriting old parameters with new parameters
     config._metadata = {
-        "tester": username,
-        "python_version": py_version,
-        "manager": "Divya Gajanana",
-        "team": "QA_Automation",
-        "testing_suite": "Regression Testing",
-        "portal": "Rebranding Portal's"
+        "tester":            "Sreenivasulu Akki",
+        "python_version":    python_version(),
+        "manager":           "Divya Gajanana",
+        "team":              "QA_Automation",
+        "testing_suite":     "Regression Testing",
+        "portal":            "Rebranding Portal's",
+        "platform":          platform.platform(),
+        "run":               datetime.now().strftime("%Y-%m-%d %H:%M:%S")
     }
 
-# ############## Changing Summary ################ :-
 @pytest.mark.optionalhook
-# def pytest_html_results_summary(prefix, summary, postfix):
-#     ''' modifying the summary in pytest environment'''
-#     from py.xml import html
 def pytest_html_results_summary(prefix, summary, postfix):
     prefix.append("<h3>TSP : 'Lmpresales'</h3>")
-    summary.append("<h3>Summary Placeholder</h3>")
-    postfix.append("<h3>Postfix Placeholder</h3>")

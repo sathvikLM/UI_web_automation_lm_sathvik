@@ -19,7 +19,7 @@ pipeline {
         ALLURE_REPORT   = 'allure-report'
         PYENV_ROOT      = "$HOME/.pyenv"
         PATH            = "$PYENV_ROOT/shims:$PYENV_ROOT/bin:$PATH"
-        TEST_ENV        = "${params.ENVIRONMENT}"     // propagate the choice to shells
+        TEST_ENV        = "${params.ENVIRONMENT}"
     }
 
     stages {
@@ -109,9 +109,18 @@ pipeline {
     }
 
     post {
+        success {
+            echo 'Zipping and archiving Allure report for email download...'
+            sh '''
+                set -e
+                zip -r allure-report.zip allure-report
+            '''
+            archiveArtifacts artifacts: 'allure-report.zip', fingerprint: true
+        }
+
         failure {
             emailext(
-                subject: "❌ [${params.ENVIRONMENT}] FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
+                subject: "[${params.ENVIRONMENT}] FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
                     Hi Team,<br><br>
                     The automation run for <b>${env.JOB_NAME}</b> has failed.<br>

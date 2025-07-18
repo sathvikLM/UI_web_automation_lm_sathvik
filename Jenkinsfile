@@ -97,7 +97,8 @@ pipeline {
                         The latest automation run for <b>${env.JOB_NAME}</b> has completed.<br>
                         <b>Status:</b> ${currentBuild.currentResult}<br>
                         <b>Environment:</b> ${params.ENVIRONMENT}<br>
-                        <b>Allure Report:</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br><br>
+                        <b>Allure Report (view):</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br>
+                        <b>Allure Report (download):</b> <a href="${env.BUILD_URL}artifact/allure-report.zip">Click here to download ZIP</a><br><br>
                         Regards,<br>QA Automation Team
                     """,
                     mimeType: 'text/html',

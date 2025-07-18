@@ -7,4 +7,4 @@ pytest-xdist
 python-slugify
 keyboard
 pyautogui
-
+pip install -r requirements.txt

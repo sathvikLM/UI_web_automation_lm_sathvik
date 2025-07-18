@@ -16,8 +16,9 @@ pipeline {
     environment {
         PYTHON_VERSION  = '3.9.18'
         ALLURE_RESULTS  = 'allure-results'
-        ALLURE_REPORT_FOLDER = 'allure-report'  // Renamed for clarity
-        ALLURE_SINGLE_FILE = 'allure-report.html' // The new final artifact
+        ALLURE_REPORT_FOLDER = 'allure-report'
+        ALLURE_SINGLE_FILE_DIR = 'allure-report.html'  // This becomes a directory
+        ALLURE_SINGLE_FILE = 'allure-report.html/complete.html'  // The actual file path
         TEST_ENV        = "${params.ENVIRONMENT}"
     }
 
@@ -51,7 +52,6 @@ pipeline {
                     . venv/bin/activate
 
                     echo "--- Installing requirements ---"
-                    # This now installs allure-combine automatically from your requirements.txt
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -72,14 +72,12 @@ pipeline {
         stage('Generate Allure Report') {
             steps {
                 script {
-                    // Generate the standard multi-file report first
                     sh '''
                         set -e
                         echo "--- Generating Allure Report folder ---"
                         export PATH="$ALLURE_HOME/bin:$PATH"
                         allure generate "$ALLURE_RESULTS" --clean -o "$ALLURE_REPORT_FOLDER"
                     '''
-                    // Then publish it to the Jenkins UI for online viewing
                     allure(
                         report: "${ALLURE_REPORT_FOLDER}",
                         results: [[path: "${ALLURE_RESULTS}"]]
@@ -87,8 +85,6 @@ pipeline {
                 }
             }
         }
-
-        // --- NEW/MODIFIED STAGES START HERE ---
 
         stage('Create & Email Single-File Report') {
             steps {
@@ -98,10 +94,24 @@ pipeline {
                     sh '''
                         set -e
                         . venv/bin/activate
-                        allure-combine "$ALLURE_REPORT_FOLDER" --dest "$ALLURE_SINGLE_FILE" --auto-create-folders
+                        allure-combine "$ALLURE_REPORT_FOLDER" --dest "$ALLURE_SINGLE_FILE_DIR" --auto-create-folders
                     '''
 
-                    // Step 2: Archive the new single file artifact
+                    // Step 2: Verify the file was created and archive it
+                    sh '''
+                        echo "--- Verifying combined report creation ---"
+                        ls -la "$ALLURE_SINGLE_FILE_DIR"
+                        if [ -f "$ALLURE_SINGLE_FILE" ]; then
+                            echo "✓ Single file report created successfully: $ALLURE_SINGLE_FILE"
+                            echo "File size: $(du -h "$ALLURE_SINGLE_FILE" | cut -f1)"
+                        else
+                            echo "✗ Single file report not found at expected location: $ALLURE_SINGLE_FILE"
+                            echo "Contents of $ALLURE_SINGLE_FILE_DIR:"
+                            ls -la "$ALLURE_SINGLE_FILE_DIR" || echo "Directory does not exist"
+                            exit 1
+                        fi
+                    '''
+
                     echo "Archiving ${ALLURE_SINGLE_FILE}..."
                     archiveArtifacts artifacts: "${ALLURE_SINGLE_FILE}"
                     
@@ -116,8 +126,6 @@ pipeline {
                             <b>Status:</b> SUCCESS<br>
                             <b>Environment:</b> ${params.ENVIRONMENT}<br>
                             <b>Allure Report (view online on Jenkins):</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br>
-                            
-                            <!-- THIS LINK IS NOW CHANGED -->
                             <b>Allure Report (download clickable file):</b> <a href="${env.BUILD_URL}artifact/${ALLURE_SINGLE_FILE}">Click here to download HTML</a><br><br>
 
                             Regards,<br>QA Automation Team

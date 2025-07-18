@@ -8,18 +8,18 @@ pipeline {
     parameters {
         choice(
             name: 'ENVIRONMENT',
-            choices: ['QA', 'PROD', 'BETA'],
+            choices: ['QA','BETA'],
             description: 'Select environment to run tests'
         )
     }
 
     environment {
-        PYTHON_VERSION  = '3.9.18'
-        ALLURE_RESULTS  = 'allure-results'
+        PYTHON_VERSION       = '3.9.18'
+        ALLURE_RESULTS       = 'allure-results'
         ALLURE_REPORT_FOLDER = 'allure-report'
-        ALLURE_SINGLE_FILE_DIR = 'allure-report.html'
-        ALLURE_FINAL_REPORT = 'allure-test-report.html'  // Clean filename
-        TEST_ENV        = "${params.ENVIRONMENT}"
+        ALLURE_COMBINED_DIR  = 'combined-report-output' // Directory for allure-combine output
+        FINAL_REPORT_NAME    = 'allure-test-report.html' // The final, user-friendly filename
+        TEST_ENV             = "${params.ENVIRONMENT}"
     }
 
     stages {
@@ -35,7 +35,6 @@ pipeline {
                 sh '''
                     #!/bin/bash
                     set -e
-
                     echo "--- Setting up pyenv and Python ---"
                     export PYENV_ROOT="$HOME/.pyenv"
                     export PATH="$PYENV_ROOT/bin:$PATH"
@@ -69,7 +68,7 @@ pipeline {
             }
         }
 
-        stage('Generate Allure Report') {
+        stage('Generate & Publish Allure Report') {
             steps {
                 script {
                     sh '''
@@ -86,51 +85,53 @@ pipeline {
             }
         }
 
-        stage('Create & Email Single-File Report') {
+        stage('Create, Archive & Email Single-File Report') {
             steps {
                 script {
-                    // Step 1: Combine the report into a single HTML file
                     echo 'Combining report into a single HTML file...'
-                    sh '''
+                    sh """
                         set -e
                         . venv/bin/activate
                         
-                        # Create the combined report
-                        allure-combine "$ALLURE_REPORT_FOLDER" --dest "$ALLURE_SINGLE_FILE_DIR" --auto-create-folders
+                        # Create the combined report in a dedicated directory
+                        allure-combine "$ALLURE_REPORT_FOLDER" --dest "$ALLURE_COMBINED_DIR" --auto-create-folders
                         
-                        # Move and rename the file to workspace root with a clean name
-                        mv "$ALLURE_SINGLE_FILE_DIR/complete.html" "$ALLURE_FINAL_REPORT"
+                        # Move and rename the file to the workspace root with a clean name
+                        mv "$ALLURE_COMBINED_DIR/complete.html" "${FINAL_REPORT_NAME}"
                         
                         echo "--- Verifying final report ---"
-                        ls -la "$ALLURE_FINAL_REPORT"
-                        echo "File size: $(du -h "$ALLURE_FINAL_REPORT" | cut -f1)"
-                    '''
+                        ls -la "${FINAL_REPORT_NAME}"
+                        echo "File size: \$(du -h ${FINAL_REPORT_NAME} | cut -f1)"
+                    """
 
-                    // Archive the clean filename
-                    echo "Archiving ${ALLURE_FINAL_REPORT}..."
-                    archiveArtifacts artifacts: "${ALLURE_FINAL_REPORT}"
+                    // Archive the final report so it's available on the Jenkins build page
+                    archiveArtifacts artifacts: "${FINAL_REPORT_NAME}"
                     
-                    // Send email with both internal and external options
+                    // Send the email with the file as a direct attachment
                     emailext(
                         from: "sathvik.bhat@lightmetrics.co",
-                        to: "sathvik.bhat@lightmetrics.co",
-                        subject: "[${params.ENVIRONMENT}] Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER} – SUCCESS",
+                        to: "sathvik.bhat@lightmetrics.co, vidya.hampiholi@lightmetrics.co, divya.gajanana@lightmetrics.co", // Added all recipients
+                        subject: "[${params.ENVIRONMENT}] Test Report: ${env.JOB_NAME} #${env.BUILD_NUMBER} – SUCCESS",
                         body: """
                             Hi Team,<br><br>
                             The latest automation run for <b>${env.JOB_NAME}</b> has completed successfully.<br>
                             <b>Status:</b> SUCCESS<br>
-                            <b>Environment:</b> ${params.ENVIRONMENT}<br>
-                            <b>Build Number:</b> ${env.BUILD_NUMBER}<br><br>
+                            <b>Environment:</b> ${params.ENVIRONMENT}<br><br>
                             
-                            <b>📊 View Results:</b><br>
-                            • <a href="${env.BUILD_URL}allure">Interactive Allure Report (Jenkins Users)</a><br>
-                            • <a href="${env.BUILD_URL}artifact/${ALLURE_FINAL_REPORT}">Download Standalone HTML Report</a><br><br>
+                            <b>📊 Test Report:</b><br>
+                            The detailed test report is attached to this email as <b>"${FINAL_REPORT_NAME}"</b>.<br><br>
                             
-                            <b>📝 Note:</b> The standalone HTML report can be downloaded and opened in any browser without needing Jenkins access.<br><br>
+                            <b>📝 How to view the attachment:</b><br>
+                            1. Download the attached HTML file.<br>
+                            2. Double-click the file to open it directly in your browser.<br>
+                            3. The report works completely offline - no server or Jenkins access is needed.<br><br>
+                            
+                            <b>For online viewing on Jenkins:</b> <a href="${env.BUILD_URL}allure">Click here</a><br><br>
 
                             Regards,<br>QA Automation Team
                         """,
-                        mimeType: 'text/html'
+                        mimeType: 'text/html',
+                        attachmentsPattern: "${FINAL_REPORT_NAME}"
                     )
                 }
             }
@@ -141,7 +142,7 @@ pipeline {
         failure {
             emailext(
                 from: "sathvik.bhat@lightmetrics.co",
-                to: "sathvik.bhat@lightmetrics.co",
+                to: "sathvik.bhat@lightmetrics.co, vidya.hampiholi@lightmetrics.co, divya.gajanana@lightmetrics.co", // Added all recipients
                 subject: "[${params.ENVIRONMENT}] FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
                     Hi Team,<br><br>
@@ -149,6 +150,7 @@ pipeline {
                     <b>Status:</b> ${currentBuild.currentResult}<br>
                     <b>Environment:</b> ${params.ENVIRONMENT}<br>
                     <b>Build URL:</b> <a href="${env.BUILD_URL}">${env.BUILD_URL}</a><br><br>
+                    Please check the console output for details.<br><br>
                     Regards,<br>QA Automation Team
                 """,
                 mimeType: 'text/html'

@@ -16,7 +16,8 @@ pipeline {
     environment {
         PYTHON_VERSION  = '3.9.18'
         ALLURE_RESULTS  = 'allure-results'
-        ALLURE_REPORT   = 'allure-report'
+        ALLURE_REPORT_FOLDER = 'allure-report'  // Renamed for clarity
+        ALLURE_SINGLE_FILE = 'allure-report.html' // The new final artifact
         TEST_ENV        = "${params.ENVIRONMENT}"
     }
 
@@ -37,25 +38,20 @@ pipeline {
                     echo "--- Setting up pyenv and Python ---"
                     export PYENV_ROOT="$HOME/.pyenv"
                     export PATH="$PYENV_ROOT/bin:$PATH"
-                    
                     eval "$(pyenv init -)"
 
                     if ! pyenv versions --bare | grep -q "^${PYTHON_VERSION}$"; then
-                      echo "Python ${PYTHON_VERSION} not found, installing..."
                       pyenv install "$PYTHON_VERSION"
-                    else
-                      echo "Python ${PYTHON_VERSION} is already installed."
                     fi
-                    
                     pyenv shell "$PYTHON_VERSION"
 
                     echo "--- Using Python version: $(python --version) ---"
-
                     echo "--- Creating virtual environment ---"
                     python -m venv venv
                     . venv/bin/activate
 
                     echo "--- Installing requirements ---"
+                    # This now installs allure-combine automatically from your requirements.txt
                     pip install --upgrade pip
                     pip install -r requirements.txt
                 '''
@@ -73,42 +69,57 @@ pipeline {
             }
         }
 
-        stage('Generate & Publish Allure Report') {
+        stage('Generate Allure Report') {
             steps {
                 script {
+                    // Generate the standard multi-file report first
                     sh '''
                         set -e
-                        echo "--- Generating Allure Report ---"
+                        echo "--- Generating Allure Report folder ---"
                         export PATH="$ALLURE_HOME/bin:$PATH"
-                        allure --version
-                        allure generate "$ALLURE_RESULTS" --clean -o "$ALLURE_REPORT"
+                        allure generate "$ALLURE_RESULTS" --clean -o "$ALLURE_REPORT_FOLDER"
                     '''
+                    // Then publish it to the Jenkins UI for online viewing
                     allure(
-                        report: "${ALLURE_REPORT}",
+                        report: "${ALLURE_REPORT_FOLDER}",
                         results: [[path: "${ALLURE_RESULTS}"]]
                     )
                 }
             }
         }
 
-        stage('Email Success Report') {
+        // --- NEW/MODIFIED STAGES START HERE ---
+
+        stage('Create & Email Single-File Report') {
             steps {
                 script {
-                    echo 'Zipping Allure report for email attachment...'
-                    sh 'zip -r allure-report.zip allure-report'
-                    archiveArtifacts artifacts: 'allure-report.zip'
+                    // Step 1: Combine the report into a single HTML file
+                    echo 'Combining report into a single HTML file...'
+                    sh '''
+                        set -e
+                        . venv/bin/activate
+                        allure-combine --auto-create-folders "$ALLURE_REPORT_FOLDER"
+                    '''
+
+                    // Step 2: Archive the new single file artifact
+                    echo "Archiving ${ALLURE_SINGLE_FILE}..."
+                    archiveArtifacts artifacts: "${ALLURE_SINGLE_FILE}"
                     
+                    // Step 3: Send the email with the updated link
                     emailext(
-                        from: "sathvik.bhat@lightmetrics.co", // Set the FROM address
-                        to: "sathvik.bhat@lightmetrics.co",   // Set the TO address
+                        from: "sathvik.bhat@lightmetrics.co",
+                        to: "sathvik.bhat@lightmetrics.co",
                         subject: "[${params.ENVIRONMENT}] Jenkins Build: ${env.JOB_NAME} #${env.BUILD_NUMBER} – SUCCESS",
                         body: """
                             Hi Team,<br><br>
                             The latest automation run for <b>${env.JOB_NAME}</b> has completed successfully.<br>
                             <b>Status:</b> SUCCESS<br>
                             <b>Environment:</b> ${params.ENVIRONMENT}<br>
-                            <b>Allure Report (view):</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br>
-                            <b>Allure Report (download):</b> <a href="${env.BUILD_URL}artifact/allure-report.zip">Click here to download ZIP</a><br><br>
+                            <b>Allure Report (view online on Jenkins):</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br>
+                            
+                            <!-- THIS LINK IS NOW CHANGED -->
+                            <b>Allure Report (download clickable file):</b> <a href="${env.BUILD_URL}artifact/${ALLURE_SINGLE_FILE}">Click here to download HTML</a><br><br>
+
                             Regards,<br>QA Automation Team
                         """,
                         mimeType: 'text/html'
@@ -121,8 +132,8 @@ pipeline {
     post {
         failure {
             emailext(
-                from: "sathvik.bhat@lightmetrics.co", // Set the FROM address
-                to: "sathvik.bhat@lightmetrics.co",   // Set the TO address
+                from: "sathvik.bhat@lightmetrics.co",
+                to: "sathvik.bhat@lightmetrics.co",
                 subject: "[${params.ENVIRONMENT}] FAILURE: ${env.JOB_NAME} #${env.BUILD_NUMBER}",
                 body: """
                     Hi Team,<br><br>

@@ -17,8 +17,8 @@ pipeline {
         PYTHON_VERSION  = '3.9.18'
         ALLURE_RESULTS  = 'allure-results'
         ALLURE_REPORT_FOLDER = 'allure-report'
-        ALLURE_SINGLE_FILE_DIR = 'allure-report.html'  // This becomes a directory
-        ALLURE_SINGLE_FILE = 'allure-report.html/complete.html'  // The actual file path
+        ALLURE_SINGLE_FILE_DIR = 'allure-report.html'
+        ALLURE_FINAL_REPORT = 'allure-test-report.html'  // Clean filename
         TEST_ENV        = "${params.ENVIRONMENT}"
     }
 
@@ -94,28 +94,23 @@ pipeline {
                     sh '''
                         set -e
                         . venv/bin/activate
+                        
+                        # Create the combined report
                         allure-combine "$ALLURE_REPORT_FOLDER" --dest "$ALLURE_SINGLE_FILE_DIR" --auto-create-folders
+                        
+                        # Move and rename the file to workspace root with a clean name
+                        mv "$ALLURE_SINGLE_FILE_DIR/complete.html" "$ALLURE_FINAL_REPORT"
+                        
+                        echo "--- Verifying final report ---"
+                        ls -la "$ALLURE_FINAL_REPORT"
+                        echo "File size: $(du -h "$ALLURE_FINAL_REPORT" | cut -f1)"
                     '''
 
-                    // Step 2: Verify the file was created and archive it
-                    sh '''
-                        echo "--- Verifying combined report creation ---"
-                        ls -la "$ALLURE_SINGLE_FILE_DIR"
-                        if [ -f "$ALLURE_SINGLE_FILE" ]; then
-                            echo "✓ Single file report created successfully: $ALLURE_SINGLE_FILE"
-                            echo "File size: $(du -h "$ALLURE_SINGLE_FILE" | cut -f1)"
-                        else
-                            echo "✗ Single file report not found at expected location: $ALLURE_SINGLE_FILE"
-                            echo "Contents of $ALLURE_SINGLE_FILE_DIR:"
-                            ls -la "$ALLURE_SINGLE_FILE_DIR" || echo "Directory does not exist"
-                            exit 1
-                        fi
-                    '''
-
-                    echo "Archiving ${ALLURE_SINGLE_FILE}..."
-                    archiveArtifacts artifacts: "${ALLURE_SINGLE_FILE}"
+                    // Archive the clean filename
+                    echo "Archiving ${ALLURE_FINAL_REPORT}..."
+                    archiveArtifacts artifacts: "${ALLURE_FINAL_REPORT}"
                     
-                    // Step 3: Send the email with the updated link
+                    // Send email with both internal and external options
                     emailext(
                         from: "sathvik.bhat@lightmetrics.co",
                         to: "sathvik.bhat@lightmetrics.co",
@@ -125,8 +120,13 @@ pipeline {
                             The latest automation run for <b>${env.JOB_NAME}</b> has completed successfully.<br>
                             <b>Status:</b> SUCCESS<br>
                             <b>Environment:</b> ${params.ENVIRONMENT}<br>
-                            <b>Allure Report (view online on Jenkins):</b> <a href="${env.BUILD_URL}allure">Click here to view</a><br>
-                            <b>Allure Report (download clickable file):</b> <a href="${env.BUILD_URL}artifact/${ALLURE_SINGLE_FILE}">Click here to download HTML</a><br><br>
+                            <b>Build Number:</b> ${env.BUILD_NUMBER}<br><br>
+                            
+                            <b>📊 View Results:</b><br>
+                            • <a href="${env.BUILD_URL}allure">Interactive Allure Report (Jenkins Users)</a><br>
+                            • <a href="${env.BUILD_URL}artifact/${ALLURE_FINAL_REPORT}">Download Standalone HTML Report</a><br><br>
+                            
+                            <b>📝 Note:</b> The standalone HTML report can be downloaded and opened in any browser without needing Jenkins access.<br><br>
 
                             Regards,<br>QA Automation Team
                         """,

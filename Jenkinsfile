@@ -98,7 +98,7 @@ pipeline {
                     sh '''
                         set -e
                         . venv/bin/activate
-                        allure-combine --auto-create-folders "$ALLURE_REPORT_FOLDER"
+                        allure-combine "$ALLURE_REPORT_FOLDER" --dest "${ALLURE_SINGLE_FILE}"
                     '''
 
                     // Step 2: Archive the new single file artifact

@@ -102,7 +102,7 @@ pipeline {
                         Regards,<br>QA Automation Team
                     """,
                     mimeType: 'text/html',
-                    to: "vidya.hampiholi@lightmetrics.co, divya.gajanana@lightmetrics.co"
+                    to: "sathvik.bhat@lightmetrics.co"
                 )
             }
         }
